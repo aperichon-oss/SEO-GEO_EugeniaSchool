@@ -100,10 +100,11 @@ function Router() {
 }
 
 function App() {
+  console.log("[v0] App rendering, BASE_URL:", import.meta.env.BASE_URL);
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
+        <WouterRouter>
           <Router />
         </WouterRouter>
         <Toaster />
