@@ -51,7 +51,7 @@
     "@tailwindcss/oxide-win32-x64-msvc": "^4.2.2",
     "@vitejs/plugin-react": "catalog:",
     "lightningcss-win32-x64-msvc": "^1.32.0",
-    "@workspace/api-client-react": "workspace:*",
+
     "class-variance-authority": "catalog:",
     "clsx": "catalog:",
     "cmdk": "^1.1.1",
