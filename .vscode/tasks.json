@@ -1,0 +1,12 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "dev-server",
+			"type": "shell",
+			"command": "npx pnpm --filter @workspace/eugenia-school run dev",
+			"isBackground": true,
+			"group": "build"
+		}
+	]
+}

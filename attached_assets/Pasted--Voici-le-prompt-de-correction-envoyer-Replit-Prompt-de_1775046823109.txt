@@ -1,0 +1,301 @@
+
+
+
+Voici le **prompt de correction** à envoyer à Replit :
+
+---
+
+# Prompt de Correction V2 — Eugenia School
+
+## CONTEXTE
+Tu as généré une première version du site Eugenia School. Ce prompt vient corriger et ajuster cette version pour qu'elle corresponde **exactement** à la V2 attendue du site actuel (https://www.eugeniaschool.com).
+
+---
+
+## ❌ PROBLÈMES À CORRIGER
+
+### 1. FIDÉLITÉ À LA V1 ACTUELLE
+
+**Problème** : Le site généré ne reproduit pas fidèlement le site actuel.
+
+**Correction attendue** :
+- **Photos** : Utilise EXACTEMENT les mêmes images que celles présentes sur https://www.eugeniaschool.com
+  - Même étudiants, mêmes postures, mêmes ambiances
+  - Récupère toutes les images depuis les URLs du site actuel
+  - Si tu ne peux pas accéder aux images, utilise leurs URLs directes depuis le CDN Webflow
+  
+- **Couleurs** : Respecte la palette du site actuel
+  - Analyse les couleurs exactes utilisées sur le site
+  - Le noir, blanc et accents colorés doivent être identiques
+  - ❌ NE PAS inventer de nouvelles couleurs (ex: #C8FF00)
+  
+- **Logo** : Reprends le logo Eugenia School existant
+  - URL du logo actuel : `https://cdn.prod.website-files.com/[...]` (à extraire du site)
+  
+- **Contenu** : Duplique le contenu réel, pas de données mockées
+  - Textes, descriptions, témoignages = copie exacte
+  - Programmes (Bachelor, MSc), pages école, événements, blog, etc.
+
+---
+
+### 2. NAVIGATION ET PAGES HUB
+
+**Problème** : Les pages "hub" apparaissent comme items de menu visibles, ce qui est incorrect.
+
+**Correction attendue** :
+
+#### Comment ça doit fonctionner :
+```
+MENU :
+├─ Formations (cliquable → redirige vers /formations)
+├─ École (cliquable → redirige vers /ecole)
+├─ Hackathons (cliquable → redirige vers /hackathons)
+├─ Événements (cliquable → redirige vers /evenements)
+├─ Blog (cliquable → redirige vers /blog)
+└─ Nous contacter (cliquable → redirige vers /contact)
+```
+
+#### Structure des pages hub :
+
+**Page hub `/formations`** (accessible en cliquant sur "Formations")
+- Liste tous les programmes disponibles :
+  - Bachelor AI Applied to Business
+  - MSc AI Applied to Business
+  - 3ème année Bachelor en alternance
+- Chaque programme = carte cliquable → vers sa page détaillée
+- La page hub elle-même n'apparaît PAS comme sous-menu
+
+**Page hub `/ecole`** (accessible en cliquant sur "École")
+- Liste toutes les sections "école" :
+  - Nos campus
+  - Notre équipe
+  - Nos valeurs
+  - Notre histoire
+- Chaque section = lien vers page détaillée
+
+**Page hub `/hackathons`**
+- Liste tous les hackathons (Géniathon, événements passés, etc.)
+
+**Page hub `/evenements`**
+- Liste tous les événements (JPO, webinaires, job dating)
+
+**Page hub `/blog`**
+- Liste tous les articles de blog
+
+#### Règle absolue pour le menu :
+- ❌ **Pas de sous-menu dropdown visible**
+- ✅ **Clic sur l'item parent = accès direct à la page hub**
+- Les pages détaillées sont accessibles depuis la page hub uniquement
+
+---
+
+### 3. ARBORESCENCE COMPLÈTE
+
+```
+/
+├─ / (homepage)
+│
+├─ /formations (PAGE HUB - liste tous les programmes)
+│   ├─ /formations/bachelor
+│   ├─ /formations/msc
+│   └─ /formations/bachelor-alternance
+│
+├─ /ecole (PAGE HUB - liste toutes les infos école)
+│   ├─ /ecole/campus
+│   ├─ /ecole/equipe
+│   ├─ /ecole/valeurs
+│   ├─ /ecole/histoire
+│   └─ /ecole/partenaires
+│
+├─ /hackathons (PAGE HUB - liste tous les hackathons)
+│   ├─ /hackathons/geniathon
+│   └─ /hackathons/[slug-hackathon]
+│
+├─ /metiers (PAGE HUB - liste tous les métiers)
+│   ├─ /metiers/data-analyst
+│   ├─ /metiers/business-analyst
+│   ├─ /metiers/product-owner
+│   ├─ /metiers/growth-hacker
+│   └─ /metiers/[autres-metiers]
+│
+├─ /evenements (PAGE HUB - liste tous les événements)
+│   └─ /evenements/[slug-evenement]
+│
+├─ /blog (PAGE HUB - liste tous les articles)
+│   ├─ /blog/[slug-article]
+│   └─ /blog/categorie/[categorie]
+│
+├─ /candidature
+├─ /brochure
+└─ /contact
+```
+
+---
+
+### 4. COMPOSANTS À CONSERVER ET AJUSTER
+
+#### Navigation (Header)
+```tsx
+<Navigation>
+  <Link href="/">Home</Link>
+  <Link href="/formations">Formations</Link> {/* Pas de sous-menu ! */}
+  <Link href="/ecole">École</Link>
+  <Link href="/hackathons">Hackathons</Link>
+  <Link href="/metiers">Métiers</Link>
+  <Link href="/evenements">Événements</Link>
+  <Link href="/blog">Blog</Link>
+  <Link href="/contact">Contact</Link>
+  <Button href="/candidature">Candidater</Button>
+</Navigation>
+```
+
+#### Breadcrumb
+- Maintenir le fil d'Ariane sur toutes les pages
+- Exemple pour `/formations/bachelor` :
+  ```
+  Home > Formations > Bachelor
+  ```
+
+#### JSON-LD
+- Conserver le Schema.org pour chaque type de page
+- Types : Organization, EducationalOrganization, Course, Event, BlogPosting, etc.
+
+---
+
+### 5. DESIGN ET UX
+
+**À conserver de la V1 actuelle** :
+- Layout général et structure des sections
+- Style des cartes et composants
+- Animations et interactions
+- Responsive design
+- Accessibilité (ARIA, contraste, navigation clavier)
+
+**À ajuster** :
+- Palette de couleurs exacte du site actuel
+- Typographie identique (fonts utilisées)
+- Espacements et proportions conformes à la V1
+
+---
+
+### 6. CONTENU RÉEL À INTÉGRER
+
+#### Programmes
+Reprends TOUT le contenu des pages :
+- `/programme/bachelor` → https://www.eugeniaschool.com/programme/bachelor
+- `/programme/msc` → https://www.eugeniaschool.com/programme/msc
+
+**Incluant** :
+- Descriptions complètes
+- Curriculum détaillé
+- Témoignages étudiants
+- Business Deep Dives (Doctolib, Carrefour, etc.)
+- Processus d'admission
+- Débouchés métiers avec salaires
+
+#### Partenaires
+Logos et liens des vrais partenaires :
+- Mistral AI
+- Station F
+- Microsoft
+- Dataiku
+- Make
+- HEC Incubateur
+- L'Esprit Critique
+- Carrefour
+- Doctolib
+- Spendesk
+- Malt
+
+#### Équipe
+Photos et descriptions de l'équipe pédagogique réelle (à extraire du site)
+
+---
+
+### 7. IMAGES À RÉCUPÉRER
+
+**Sources** :
+- Toutes les images du CDN Webflow actuel :
+  - `https://cdn.prod.website-files.com/67ab1d492136bb5f36b3ec6b/[...]`
+  - `https://cdn.prod.website-files.com/67ab8ba4ea1a5d633ea28cf6/[...]`
+
+**Catégories d'images** :
+1. **Logo** : Logo Eugenia School
+2. **Étudiants** : Photos des étudiants en cours, travail, pitch, etc.
+3. **Campus** : Photos des locaux, salles de classe, espaces de travail
+4. **Partenaires** : Logos entreprises
+5. **Équipe** : Photos de l'équipe pédagogique
+6. **Événements** : Photos JPO, hackathons, masterclass
+
+**Action** : Parse le site actuel et crée une liste exhaustive des URLs d'images à utiliser.
+
+---
+
+### 8. FONCTIONNALITÉS PRIORITAIRES
+
+#### Formulaires fonctionnels
+- ✅ Candidature
+- ✅ Téléchargement brochure
+- ✅ Inscription événements
+- ✅ Contact
+
+Tous connectés à un système backend (ou Webflow/Typeform si nécessaire)
+
+#### SEO optimisé
+- Meta titles et descriptions pour chaque page
+- Schema.org JSON-LD
+- Sitemap.xml
+- Robots.txt
+- Open Graph / Twitter Cards
+
+---
+
+## 🎯 PRIORITÉS DE CORRECTION
+
+### Phase 1 (URGENT)
+1. ✅ Corriger la navigation (supprimer sous-menus, rendre hub cliquables)
+2. ✅ Créer les pages hub manquantes
+3. ✅ Intégrer le contenu réel (pas de mock)
+
+### Phase 2 (IMPORTANT)
+4. ✅ Récupérer et intégrer toutes les images du site actuel
+5. ✅ Ajuster la palette de couleurs
+6. ✅ Intégrer le logo réel
+
+### Phase 3 (AMÉLIORATION)
+7. ✅ Peaufiner les animations et interactions
+8. ✅ Optimiser les performances
+9. ✅ Tester l'accessibilité complète
+
+---
+
+## 📝 VALIDATION FINALE
+
+Avant de considérer la V2 terminée, vérifie que :
+- [ ] Le site ressemble visuellement à 95% au site actuel
+- [ ] Toutes les photos sont les mêmes que la V1
+- [ ] La navigation fonctionne comme décrit (hub cliquables)
+- [ ] Tout le contenu réel est intégré (pas de lorem ipsum)
+- [ ] Les formulaires sont fonctionnels
+- [ ] Le SEO est optimisé (meta, JSON-LD, sitemap)
+- [ ] Le site est 100% responsive
+- [ ] L'accessibilité WCAG AA est respectée
+
+---
+
+## ⚠️ CE QU'IL NE FAUT PAS FAIRE
+
+❌ Inventer de nouvelles couleurs ou un nouveau design  
+❌ Créer des sous-menus dropdown dans la navigation  
+❌ Utiliser des données mockées ou du faux contenu  
+❌ Modifier la structure du contenu existant  
+❌ Changer les logos ou images des partenaires  
+
+---
+
+**Objectif final** : Une V2 qui est une **réplique modernisée** du site actuel, avec une meilleure architecture technique, mais une fidélité visuelle et de contenu totale.
+
+---
+
+Voilà ! Envoie ce prompt à Replit, ça devrait corriger les principaux problèmes. Tu veux que je l'ajuste ou que je détaille certaines parties ? 🚀
+

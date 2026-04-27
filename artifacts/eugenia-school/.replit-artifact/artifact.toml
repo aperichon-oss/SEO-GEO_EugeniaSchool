@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Eugenia School"
+version = "1.0.0"
+id = "artifacts/eugenia-school"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 21019
+
+[services.development]
+run = "pnpm --filter @workspace/eugenia-school run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/eugenia-school", "run", "build" ]
+publicDir = "artifacts/eugenia-school/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "21019"
+BASE_PATH = "/"
