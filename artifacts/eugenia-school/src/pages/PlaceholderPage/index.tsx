@@ -49,7 +49,7 @@ export default function PlaceholderPage() {
         <section className="py-20">
           <div className="container mx-auto px-6 max-w-4xl">
             <div className="bg-white rounded-2xl p-8 md:p-12 border border-[#E0DDD8] shadow-sm">
-              <div className="prose prose-lg max-w-none prose-headings:font-bold prose-headings:text-[#0A0A0A] prose-p:text-[#5C5C5C] prose-a:text-[#0A0A0A] prose-a:font-bold hover:prose-a:text-[#FF6B2B]">
+              <div className="prose prose-lg max-w-none prose-headings:font-bold prose-headings:text-[#0A0A0A] prose-p:text-[#5C5C5C] prose-a:text-[#0A0A0A] prose-a:font-bold hover:prose-a:text-[#8B2346]">
                 <h2>À propos de ce contenu</h2>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.

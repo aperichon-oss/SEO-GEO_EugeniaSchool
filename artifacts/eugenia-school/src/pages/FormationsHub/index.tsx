@@ -56,7 +56,7 @@ export default function FormationsHub() {
                 Nos Programmes
               </div>
               <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
-                Des formations au cœur de <span className="text-[#FF6B2B]">l'IA et du Business</span>
+                Des formations au cœur de <span className="text-[#8B2346]">l'IA et du Business</span>
               </h1>
               <p className="text-lg text-[#9E9E9E] leading-relaxed">
                 Eugenia School propose deux programmes phares — Bachelor et MSc — tous deux hors Parcoursup/MonMaster, en double diplôme avec Grenoble École de Management (Top 10 mondial).
@@ -101,7 +101,7 @@ export default function FormationsHub() {
                       </div>
                       <Link
                         href={prog.href}
-                        className="inline-flex items-center gap-2 bg-[#0A0A0A] hover:bg-[#FF6B2B] text-white px-7 py-3.5 rounded-full font-bold text-sm transition-colors group w-fit"
+                        className="inline-flex items-center gap-2 bg-[#0A0A0A] hover:bg-[#8B2346] text-white px-7 py-3.5 rounded-full font-bold text-sm transition-colors group w-fit"
                       >
                         Découvrir le programme
                         <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
@@ -126,7 +126,7 @@ export default function FormationsHub() {
         <section className="py-16 bg-[#0A0A0A] text-white">
           <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="flex items-center gap-4">
-              <GraduationCap className="w-10 h-10 text-[#FF6B2B]" />
+              <GraduationCap className="w-10 h-10 text-[#8B2346]" />
               <div>
                 <div className="text-sm font-bold text-[#9E9E9E] uppercase tracking-wider mb-1">Double Diplôme</div>
                 <div className="text-2xl font-extrabold">Grenoble École de Management</div>
@@ -134,14 +134,14 @@ export default function FormationsHub() {
               </div>
             </div>
             <div className="flex items-center gap-4">
-              <MapPin className="w-8 h-8 text-[#FF6B2B]" />
+              <MapPin className="w-8 h-8 text-[#8B2346]" />
               <div>
                 <div className="text-sm font-bold text-[#9E9E9E] uppercase tracking-wider mb-1">Campus</div>
                 <div className="text-xl font-extrabold">Paris & Lyon</div>
               </div>
             </div>
             <div className="flex items-center gap-4">
-              <Building2 className="w-8 h-8 text-[#FF6B2B]" />
+              <Building2 className="w-8 h-8 text-[#8B2346]" />
               <div>
                 <div className="text-sm font-bold text-[#9E9E9E] uppercase tracking-wider mb-1">Partenaires</div>
                 <div className="text-xl font-extrabold">150+ entreprises</div>
@@ -149,7 +149,7 @@ export default function FormationsHub() {
             </div>
             <Link
               href="/candidature"
-              className="flex-shrink-0 inline-flex items-center gap-2 bg-[#FF6B2B] hover:bg-[#E5521A] text-white px-7 py-3.5 rounded-full font-bold transition-colors group"
+              className="flex-shrink-0 inline-flex items-center gap-2 bg-[#8B2346] hover:bg-[#6B1A35] text-white px-7 py-3.5 rounded-full font-bold transition-colors group"
             >
               Candidater
               <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />

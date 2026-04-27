@@ -81,7 +81,7 @@ export default function Home() {
                 variants={fadeIn}
                 className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
               >
-                <div className="flex items-center gap-2 text-green-400">
+                <div className="flex items-center gap-2 text-[#FCBA35]">
                   <Zap className="w-5 h-5" />
                   <span className="text-lg">Apprendre en faisant : dès le premier jour, nos étudiants travaillent sur des projets concrets.</span>
                 </div>
@@ -90,7 +90,7 @@ export default function Home() {
                 variants={fadeIn}
                 className="flex flex-col sm:flex-row gap-4 justify-center items-center"
               >
-                <div className="flex items-center gap-2 text-blue-400">
+                <div className="flex items-center gap-2 text-[#8B2346]">
                   <Target className="w-5 h-5" />
                   <span className="text-lg">Maîtriser l'IA : ils allient théorie et pratique pour exceller dans les métiers de demain.</span>
                 </div>
@@ -231,7 +231,7 @@ export default function Home() {
             >
               <Link
                 href="/entreprises-partenaires"
-                className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold transition-colors duration-200"
+                className="inline-flex items-center gap-2 bg-[#8B2346] hover:bg-[#6B1A35] text-white px-8 py-4 rounded-lg font-semibold transition-colors duration-200"
               >
                 Découvrir nos partenaires
                 <ArrowRight className="w-5 h-5" />
@@ -267,8 +267,8 @@ export default function Home() {
               >
                 <div className="bg-white p-8 rounded-xl shadow-lg">
                   <div className="flex items-center gap-4 mb-4">
-                    <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                      <BookOpen className="w-6 h-6 text-blue-600" />
+                    <div className="w-12 h-12 bg-[#F5E6EA] rounded-lg flex items-center justify-center">
+                      <BookOpen className="w-6 h-6 text-[#8B2346]" />
                     </div>
                     <h3 className="text-2xl font-bold text-gray-900">Programme Bachelor</h3>
                   </div>
@@ -277,7 +277,7 @@ export default function Home() {
                   </p>
                   <Link
                     href="/programme/bachelor"
-                    className="text-blue-600 hover:text-blue-700 font-semibold inline-flex items-center gap-2"
+                    className="text-[#8B2346] hover:text-[#6B1A35] font-semibold inline-flex items-center gap-2"
                   >
                     EN SAVOIR PLUS
                     <ArrowRight className="w-4 h-4" />
@@ -293,8 +293,8 @@ export default function Home() {
               >
                 <div className="bg-white p-8 rounded-xl shadow-lg">
                   <div className="flex items-center gap-4 mb-4">
-                    <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                      <Users className="w-6 h-6 text-green-600" />
+                    <div className="w-12 h-12 bg-[#F5E6EA] rounded-lg flex items-center justify-center">
+                      <Users className="w-6 h-6 text-[#8B2346]" />
                     </div>
                     <h3 className="text-2xl font-bold text-gray-900">Programme MSc</h3>
                   </div>
@@ -303,7 +303,7 @@ export default function Home() {
                   </p>
                   <Link
                     href="/programme/msc"
-                    className="text-green-600 hover:text-green-700 font-semibold inline-flex items-center gap-2"
+                    className="text-[#8B2346] hover:text-[#6B1A35] font-semibold inline-flex items-center gap-2"
                   >
                     EN SAVOIR PLUS
                     <ArrowRight className="w-4 h-4" />
@@ -345,7 +345,7 @@ export default function Home() {
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={fadeIn}
-                className="bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-xl"
+                className="bg-gradient-to-br from-[#F5E6EA] to-[#EBCCD3] p-8 rounded-xl"
               >
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">Bachelor business deep dives</h3>
                 <p className="text-gray-700 mb-6">
@@ -354,15 +354,15 @@ export default function Home() {
                 </p>
                 <div className="space-y-3 text-sm text-gray-600">
                   <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                    <div className="w-2 h-2 bg-[#8B2346] rounded-full"></div>
                     <span>Bachelor semaine 1 : Présentation des enjeux actuels de l'entreprise</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                    <div className="w-2 h-2 bg-[#8B2346] rounded-full"></div>
                     <span>Dévoilement du sujet data et business donné aux élèves</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                    <div className="w-2 h-2 bg-[#8B2346] rounded-full"></div>
                     <span>Formation des équipes</span>
                   </div>
                 </div>
@@ -373,7 +373,7 @@ export default function Home() {
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={fadeIn}
-                className="bg-gradient-to-br from-green-50 to-green-100 p-8 rounded-xl"
+                className="bg-gradient-to-br from-[#FEF5E0] to-[#FDECC8] p-8 rounded-xl"
               >
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">MSc Géniathon</h3>
                 <p className="text-gray-700 mb-6">
@@ -383,15 +383,15 @@ export default function Home() {
                 </p>
                 <div className="space-y-3 text-sm text-gray-600">
                   <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                    <div className="w-2 h-2 bg-[#FCBA35] rounded-full"></div>
                     <span>Semaine 1 : Rencontre entre les équipes data de Doctolib et les élèves</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                    <div className="w-2 h-2 bg-[#FCBA35] rounded-full"></div>
                     <span>Présentation du cas business amélioré par l'IA</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                    <div className="w-2 h-2 bg-[#FCBA35] rounded-full"></div>
                     <span>Démonstration en live de la solution développée</span>
                   </div>
                 </div>
@@ -407,7 +407,7 @@ export default function Home() {
             >
               <Link
                 href="/candidature"
-                className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold transition-colors duration-200"
+                className="inline-flex items-center gap-2 bg-[#8B2346] hover:bg-[#6B1A35] text-white px-8 py-4 rounded-lg font-semibold transition-colors duration-200"
               >
                 Candidature
                 <ArrowRight className="w-5 h-5" />
@@ -453,12 +453,12 @@ export default function Home() {
                 >
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="text-xl font-bold">{metier.title}</h3>
-                    <span className="text-2xl font-bold text-blue-400">{metier.salaryEntry.min}-{metier.salaryEntry.max}k</span>
+                    <span className="text-2xl font-bold text-[#8B2346]">{metier.salaryEntry.min}-{metier.salaryEntry.max}k</span>
                   </div>
                   <p className="text-gray-300 text-sm mb-4">{metier.description}</p>
                   <Link
                     href={`/metiers/${metier.slug}`}
-                    className="text-blue-400 hover:text-blue-300 font-semibold text-sm inline-flex items-center gap-1"
+                    className="text-[#8B2346] hover:text-[#6B1A35] font-semibold text-sm inline-flex items-center gap-1"
                   >
                     En savoir plus
                     <ArrowRight className="w-3 h-3" />
@@ -476,7 +476,7 @@ export default function Home() {
             >
               <Link
                 href="/metiers"
-                className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold transition-colors duration-200"
+                className="inline-flex items-center gap-2 bg-[#8B2346] hover:bg-[#6B1A35] text-white px-8 py-4 rounded-lg font-semibold transition-colors duration-200"
               >
                 Découvrir tous les métiers
                 <ArrowRight className="w-5 h-5" />
@@ -509,13 +509,13 @@ export default function Home() {
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={fadeIn}
-                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-8 rounded-xl mb-8"
+                className="bg-gradient-to-r from-[#8B2346] to-[#6B1A35] text-white p-8 rounded-xl mb-8"
               >
                 <div className="flex items-center gap-4 mb-4">
                   <Calendar className="w-8 h-8" />
                   <div>
                     <h3 className="text-2xl font-bold">NOTRE PROCHAIN ÉVÉNEMENT</h3>
-                    <p className="text-blue-100">Journée Portes Ouvertes & Découverte de l'IA</p>
+                    <p className="text-[#EBCCD3]">Journée Portes Ouvertes & Découverte de l'IA</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-2 mb-6">
@@ -528,7 +528,7 @@ export default function Home() {
                 </div>
                 <Link
                   href="/evenements/journee-portes-ouvertes-decouverte"
-                  className="inline-flex items-center gap-2 bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200"
+                  className="inline-flex items-center gap-2 bg-white text-[#8B2346] px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200"
                 >
                   S'inscrire
                   <ArrowRight className="w-4 h-4" />
@@ -544,7 +544,7 @@ export default function Home() {
               >
                 <Link
                   href="/evenements"
-                  className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold"
+                  className="inline-flex items-center gap-2 text-[#8B2346] hover:text-[#6B1A35] font-semibold"
                 >
                   Tous les événements
                   <ArrowRight className="w-4 h-4" />
@@ -566,7 +566,7 @@ export default function Home() {
             >
               <Link
                 href="/blog"
-                className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold text-lg"
+                className="inline-flex items-center gap-2 text-[#8B2346] hover:text-[#6B1A35] font-semibold text-lg"
               >
                 Le blog
                 <ArrowRight className="w-4 h-4" />
@@ -576,7 +576,7 @@ export default function Home() {
         </section>
 
         {/* CTA */}
-        <section className="py-20 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 text-white">
+        <section className="py-20 bg-[#8B2346] text-white">
           <div className="container mx-auto px-4 text-center">
             <motion.div
               initial="hidden"
@@ -592,7 +592,7 @@ export default function Home() {
               </motion.h2>
               <motion.p
                 variants={fadeIn}
-                className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto"
+                className="text-xl text-[#EBCCD3] mb-8 max-w-2xl mx-auto"
               >
                 Rejoignez l'aventure
               </motion.p>
@@ -602,14 +602,14 @@ export default function Home() {
               >
                 <Link
                   href="/candidature"
-                  className="inline-flex items-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200"
+                  className="inline-flex items-center gap-2 bg-white text-[#8B2346] px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200"
                 >
                   Candidature
                   <ArrowRight className="w-5 h-5" />
                 </Link>
                 <Link
                   href="/brochure"
-                  className="inline-flex items-center gap-2 border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors duration-200"
+                  className="inline-flex items-center gap-2 border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-[#8B2346] transition-colors duration-200"
                 >
                   Brochure
                   <ArrowRight className="w-5 h-5" />
@@ -617,7 +617,7 @@ export default function Home() {
               </motion.div>
               <motion.p
                 variants={fadeIn}
-                className="text-blue-100 mt-8 max-w-2xl mx-auto"
+                className="text-[#EBCCD3] mt-8 max-w-2xl mx-auto"
               >
                 Nous transformons l'énergie des élèves, en compétences IA concrètes, ouvrant la voie à des carrières d'avenir,
                 au-delà du cadre académique traditionnel.

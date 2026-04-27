@@ -89,7 +89,7 @@ export default function Contact() {
                           <FormItem>
                             <FormLabel className="text-[#0A0A0A] font-bold">Prénom</FormLabel>
                             <FormControl>
-                              <Input placeholder="Jean" className="bg-[#F5F2EE] border-[#E0DDD8] focus-visible:ring-[#FF6B2B]" {...field} />
+                              <Input placeholder="Jean" className="bg-[#F5F2EE] border-[#E0DDD8] focus-visible:ring-[#8B2346]" {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -102,7 +102,7 @@ export default function Contact() {
                           <FormItem>
                             <FormLabel className="text-[#0A0A0A] font-bold">Nom</FormLabel>
                             <FormControl>
-                              <Input placeholder="Dupont" className="bg-[#F5F2EE] border-[#E0DDD8] focus-visible:ring-[#FF6B2B]" {...field} />
+                              <Input placeholder="Dupont" className="bg-[#F5F2EE] border-[#E0DDD8] focus-visible:ring-[#8B2346]" {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -118,7 +118,7 @@ export default function Contact() {
                           <FormItem>
                             <FormLabel className="text-[#0A0A0A] font-bold">Email</FormLabel>
                             <FormControl>
-                              <Input type="email" placeholder="jean.dupont@email.com" className="bg-[#F5F2EE] border-[#E0DDD8] focus-visible:ring-[#FF6B2B]" {...field} />
+                              <Input type="email" placeholder="jean.dupont@email.com" className="bg-[#F5F2EE] border-[#E0DDD8] focus-visible:ring-[#8B2346]" {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -131,7 +131,7 @@ export default function Contact() {
                           <FormItem>
                             <FormLabel className="text-[#0A0A0A] font-bold">Téléphone</FormLabel>
                             <FormControl>
-                              <Input type="tel" placeholder="06 12 34 56 78" className="bg-[#F5F2EE] border-[#E0DDD8] focus-visible:ring-[#FF6B2B]" {...field} />
+                              <Input type="tel" placeholder="06 12 34 56 78" className="bg-[#F5F2EE] border-[#E0DDD8] focus-visible:ring-[#8B2346]" {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -147,7 +147,7 @@ export default function Contact() {
                           <FormLabel className="text-[#0A0A0A] font-bold">Programme d'intérêt</FormLabel>
                           <Select onValueChange={field.onChange} defaultValue={field.value}>
                             <FormControl>
-                              <SelectTrigger className="bg-[#F5F2EE] border-[#E0DDD8] focus:ring-[#FF6B2B]">
+                              <SelectTrigger className="bg-[#F5F2EE] border-[#E0DDD8] focus:ring-[#8B2346]">
                                 <SelectValue placeholder="Sélectionnez un programme" />
                               </SelectTrigger>
                             </FormControl>
@@ -171,7 +171,7 @@ export default function Contact() {
                           <FormControl>
                             <Textarea 
                               placeholder="Comment pouvons-nous vous aider ?" 
-                              className="bg-[#F5F2EE] border-[#E0DDD8] focus-visible:ring-[#FF6B2B] min-h-[150px] resize-y" 
+                              className="bg-[#F5F2EE] border-[#E0DDD8] focus-visible:ring-[#8B2346] min-h-[150px] resize-y" 
                               {...field} 
                             />
                           </FormControl>
@@ -180,7 +180,7 @@ export default function Contact() {
                       )}
                     />
 
-                    <Button type="submit" className="w-full md:w-auto bg-[#0A0A0A] text-white hover:bg-[#FF6B2B] hover:text-[#0A0A0A] px-8 py-6 rounded-full font-bold text-base transition-colors">
+                    <Button type="submit" className="w-full md:w-auto bg-[#0A0A0A] text-white hover:bg-[#8B2346] hover:text-[#0A0A0A] px-8 py-6 rounded-full font-bold text-base transition-colors">
                       Envoyer le message
                     </Button>
                   </form>
@@ -193,7 +193,7 @@ export default function Contact() {
                   <h3 className="font-bold text-xl mb-6">Campus Paris</h3>
                   <div className="space-y-6">
                     <div className="flex items-start gap-4">
-                      <MapPin className="w-6 h-6 text-[#FF6B2B] shrink-0 mt-1" />
+                      <MapPin className="w-6 h-6 text-[#8B2346] shrink-0 mt-1" />
                       <div>
                         <div className="font-bold mb-1">Adresse</div>
                         <div className="text-[#9E9E9E] leading-relaxed">
@@ -203,19 +203,19 @@ export default function Contact() {
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
-                      <Mail className="w-6 h-6 text-[#FF6B2B] shrink-0 mt-1" />
+                      <Mail className="w-6 h-6 text-[#8B2346] shrink-0 mt-1" />
                       <div>
                         <div className="font-bold mb-1">Email</div>
-                        <a href="mailto:admissions@eugeniaschool.com" className="text-[#9E9E9E] hover:text-[#FF6B2B] transition-colors">
+                        <a href="mailto:admissions@eugeniaschool.com" className="text-[#9E9E9E] hover:text-[#8B2346] transition-colors">
                           admissions@eugeniaschool.com
                         </a>
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
-                      <Phone className="w-6 h-6 text-[#FF6B2B] shrink-0 mt-1" />
+                      <Phone className="w-6 h-6 text-[#8B2346] shrink-0 mt-1" />
                       <div>
                         <div className="font-bold mb-1">Téléphone</div>
-                        <a href="tel:+33123456789" className="text-[#9E9E9E] hover:text-[#FF6B2B] transition-colors">
+                        <a href="tel:+33123456789" className="text-[#9E9E9E] hover:text-[#8B2346] transition-colors">
                           +33 1 23 45 67 89
                         </a>
                       </div>

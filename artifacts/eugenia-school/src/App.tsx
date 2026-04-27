@@ -18,6 +18,9 @@ import EvenementsHub from "@/pages/EvenementsHub";
 import BlogHub from "@/pages/BlogHub";
 import BlogPost from "@/pages/BlogPost";
 import Candidature from "@/pages/Candidature";
+import AdmissionsHub from "@/pages/AdmissionsHub";
+import CampusHub from "@/pages/CampusHub";
+import VieEtudianteHub from "@/pages/VieEtudianteHub";
 import PlaceholderPage from "@/pages/PlaceholderPage";
 import NotFound from "@/pages/not-found";
 
@@ -30,17 +33,39 @@ function Router() {
 
       {/* Formations */}
       <Route path="/formations" component={FormationsHub} />
+      <Route path="/programme/bachelor" component={Bachelor} />
+      <Route path="/programme/msc" component={MSc} />
       <Route path="/formations/bachelor" component={Bachelor} />
       <Route path="/formations/msc" component={MSc} />
-      <Route path="/formations/bachelor-alternance" component={PlaceholderPage} />
+      <Route path="/formations/alternance" component={PlaceholderPage} />
 
       {/* École */}
       <Route path="/ecole" component={EcoleHub} />
-      <Route path="/ecole/campus" component={PlaceholderPage} />
+      <Route path="/ecole/methode" component={PlaceholderPage} />
       <Route path="/ecole/equipe" component={PlaceholderPage} />
-      <Route path="/ecole/valeurs" component={PlaceholderPage} />
-      <Route path="/ecole/histoire" component={PlaceholderPage} />
+      <Route path="/ecole/certifications" component={PlaceholderPage} />
       <Route path="/ecole/partenaires" component={PlaceholderPage} />
+      <Route path="/notre-adn" component={PlaceholderPage} />
+      <Route path="/approche-pedagogique" component={PlaceholderPage} />
+      <Route path="/entreprises-partenaires" component={PlaceholderPage} />
+      <Route path="/methode-eugenia" component={PlaceholderPage} />
+
+      {/* Admissions */}
+      <Route path="/admissions" component={AdmissionsHub} />
+      <Route path="/admissions/processus" component={AdmissionsHub} />
+      <Route path="/admissions/financement" component={PlaceholderPage} />
+      <Route path="/admissions/candidature" component={Candidature} />
+      <Route path="/admissions/portes-ouvertes" component={PlaceholderPage} />
+
+      {/* Campus */}
+      <Route path="/campus" component={CampusHub} />
+      <Route path="/campus/paris" component={PlaceholderPage} />
+
+      {/* Vie étudiante */}
+      <Route path="/vie-etudiante" component={VieEtudianteHub} />
+      <Route path="/vie-etudiante/geniathons" component={HackathonsHub} />
+      <Route path="/vie-etudiante/evenements" component={EvenementsHub} />
+      <Route path="/vie-etudiante/associations" component={PlaceholderPage} />
 
       {/* Hackathons */}
       <Route path="/hackathons" component={HackathonsHub} />
@@ -67,6 +92,7 @@ function Router() {
       <Route path="/contact" component={Contact} />
       <Route path="/faq" component={FAQ} />
       <Route path="/mentions-legales" component={PlaceholderPage} />
+      <Route path="/presse" component={PlaceholderPage} />
 
       <Route component={NotFound} />
     </Switch>

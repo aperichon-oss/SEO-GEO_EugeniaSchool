@@ -10,7 +10,7 @@ export function Footer() {
           <div className="lg:col-span-1">
             <Link href="/" className="inline-block mb-6" aria-label="Eugenia School">
               <span className="font-sans font-extrabold text-2xl tracking-tight text-white">
-                EUGENIA<span className="text-[#FF6B2B]">.</span>
+                EUGENIA<span className="text-[#8B2346]">.</span>
               </span>
             </Link>
             <p className="text-[#9E9E9E] text-sm leading-relaxed mb-6">
@@ -23,7 +23,7 @@ export function Footer() {
                   href="https://www.eugeniaschool.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-full bg-[#1A1A1A] flex items-center justify-center hover:bg-[#FF6B2B] transition-colors"
+                  className="w-9 h-9 rounded-full bg-[#1A1A1A] flex items-center justify-center hover:bg-[#8B2346] transition-colors"
                   aria-label="Réseau social Eugenia School"
                 >
                   <Icon className="w-4 h-4" />
@@ -36,14 +36,14 @@ export function Footer() {
             <h3 className="font-bold text-[13px] uppercase tracking-widest text-white mb-5">L'École</h3>
             <ul className="space-y-3">
               {[
-                { label: "Notre histoire", href: "/ecole/histoire" },
-                { label: "Équipe pédagogique", href: "/ecole/equipe" },
-                { label: "Nos campus", href: "/ecole/campus" },
-                { label: "Nos valeurs", href: "/ecole/valeurs" },
+                { label: "Notre ADN", href: "/ecole" },
+                { label: "Méthode pédagogique", href: "/ecole/methode" },
+                { label: "Équipe", href: "/ecole/equipe" },
+                { label: "Certifications", href: "/ecole/certifications" },
                 { label: "Partenaires", href: "/ecole/partenaires" },
               ].map((l) => (
                 <li key={l.href}>
-                  <Link href={l.href} className="text-[#9E9E9E] hover:text-[#FF6B2B] text-sm transition-colors">
+                  <Link href={l.href} className="text-[#9E9E9E] hover:text-[#8B2346] text-sm transition-colors">
                     {l.label}
                   </Link>
                 </li>
@@ -52,17 +52,17 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="font-bold text-[13px] uppercase tracking-widest text-white mb-5">Formations</h3>
+            <h3 className="font-bold text-[13px] uppercase tracking-widest text-white mb-5">Programmes</h3>
             <ul className="space-y-3">
               {[
-                { label: "Bachelor (Post-Bac)", href: "/formations/bachelor" },
-                { label: "Bachelor 3ème année", href: "/formations/bachelor-alternance" },
-                { label: "Master of Science", href: "/formations/msc" },
-                { label: "Les Géniathons", href: "/hackathons" },
-                { label: "Débouchés & Métiers", href: "/metiers" },
+                { label: "Bachelor IA & Business", href: "/formations/bachelor" },
+                { label: "MSc IA & Business", href: "/formations/msc" },
+                { label: "Alternance", href: "/formations/alternance" },
+                { label: "Débouchés métiers", href: "/metiers" },
+                { label: "Géniathons", href: "/vie-etudiante/geniathons" },
               ].map((l) => (
                 <li key={l.href}>
-                  <Link href={l.href} className="text-[#9E9E9E] hover:text-[#FF6B2B] text-sm transition-colors">
+                  <Link href={l.href} className="text-[#9E9E9E] hover:text-[#8B2346] text-sm transition-colors">
                     {l.label}
                   </Link>
                 </li>
@@ -74,13 +74,14 @@ export function Footer() {
             <h3 className="font-bold text-[13px] uppercase tracking-widest text-white mb-5">Admissions</h3>
             <ul className="space-y-3">
               {[
-                { label: "Candidater", href: "/candidature" },
-                { label: "Télécharger la brochure", href: "/brochure" },
-                { label: "Journées Portes Ouvertes", href: "/evenements" },
+                { label: "Processus d'admission", href: "/admissions/processus" },
+                { label: "Financement", href: "/admissions/financement" },
+                { label: "Candidater", href: "/admissions/candidature" },
+                { label: "Portes ouvertes", href: "/admissions/portes-ouvertes" },
                 { label: "FAQ", href: "/faq" },
               ].map((l) => (
                 <li key={l.href}>
-                  <Link href={l.href} className="text-[#9E9E9E] hover:text-[#FF6B2B] text-sm transition-colors">
+                  <Link href={l.href} className="text-[#9E9E9E] hover:text-[#8B2346] text-sm transition-colors">
                     {l.label}
                   </Link>
                 </li>
@@ -89,16 +90,17 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="font-bold text-[13px] uppercase tracking-widest text-white mb-5">Actualités</h3>
+            <h3 className="font-bold text-[13px] uppercase tracking-widest text-white mb-5">Campus & Contact</h3>
             <ul className="space-y-3">
               {[
-                { label: "Le Blog", href: "/blog" },
-                { label: "Événements", href: "/evenements" },
+                { label: "Campus Paris", href: "/campus/paris" },
+                { label: "Blog", href: "/blog" },
                 { label: "Contact", href: "/contact" },
                 { label: "Mentions légales", href: "/mentions-legales" },
+                { label: "Presse", href: "/presse" },
               ].map((l) => (
                 <li key={l.href}>
-                  <Link href={l.href} className="text-[#9E9E9E] hover:text-[#FF6B2B] text-sm transition-colors">
+                  <Link href={l.href} className="text-[#9E9E9E] hover:text-[#8B2346] text-sm transition-colors">
                     {l.label}
                   </Link>
                 </li>

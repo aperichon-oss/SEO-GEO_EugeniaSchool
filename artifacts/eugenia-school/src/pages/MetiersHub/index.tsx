@@ -29,17 +29,17 @@ export default function MetiersHub() {
             />
             <div className="max-w-4xl mt-8">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 tracking-tight">
-                Des carrières <span className="text-[#FF6B2B]">à fort impact</span>
+                Des carrières <span className="text-[#8B2346]">à fort impact</span>
               </h1>
               <p className="text-lg text-[#9E9E9E] leading-relaxed max-w-2xl mb-8">
                 Les entreprises recherchent désespérément des profils hybrides : des professionnels capables de comprendre le code, d'analyser la data, et de transformer ces insights en décisions stratégiques.
               </p>
               <div className="flex items-center gap-4 text-sm font-bold">
                 <div className="flex items-center gap-2 bg-[#1A1A1A] px-4 py-2 rounded-full">
-                  <TrendingUp className="w-4 h-4 text-[#FF6B2B]" /> 98% en poste après 6 mois
+                  <TrendingUp className="w-4 h-4 text-[#8B2346]" /> 98% en poste après 6 mois
                 </div>
                 <div className="flex items-center gap-2 bg-[#1A1A1A] px-4 py-2 rounded-full">
-                  <TrendingUp className="w-4 h-4 text-[#FF6B2B]" /> Salaire moyen 45k€
+                  <TrendingUp className="w-4 h-4 text-[#8B2346]" /> Salaire moyen 45k€
                 </div>
               </div>
             </div>
@@ -52,7 +52,7 @@ export default function MetiersHub() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {metiers.map((metier) => (
                 <Link key={metier.slug} href={`/metiers/${metier.slug}`} className="bg-white border border-[#E0DDD8] rounded-3xl p-8 hover:-translate-y-2 transition-transform duration-300 shadow-sm flex flex-col h-full group">
-                  <h2 className="text-2xl font-bold text-[#0A0A0A] mb-4 group-hover:text-[#FF6B2B] transition-colors">{metier.title}</h2>
+                  <h2 className="text-2xl font-bold text-[#0A0A0A] mb-4 group-hover:text-[#8B2346] transition-colors">{metier.title}</h2>
                   <p className="text-[#5C5C5C] mb-8 flex-1 leading-relaxed">{metier.description}</p>
                   
                   <div className="bg-[#F5F2EE] p-4 rounded-xl mb-6">
@@ -89,7 +89,7 @@ export default function MetiersHub() {
         <section className="py-24 bg-[#0A0A0A] text-center">
           <div className="container mx-auto px-6">
             <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6">Formez-vous aux métiers de demain</h2>
-            <Link href="/formations" className="inline-flex justify-center items-center gap-2 bg-[#FF6B2B] text-[#0A0A0A] px-8 py-4 rounded-full font-bold text-base transition-all hover:bg-white mt-8">
+            <Link href="/formations" className="inline-flex justify-center items-center gap-2 bg-[#8B2346] text-[#0A0A0A] px-8 py-4 rounded-full font-bold text-base transition-all hover:bg-white mt-8">
               Découvrir nos formations
               <ArrowRight className="w-5 h-5" />
             </Link>

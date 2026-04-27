@@ -28,9 +28,9 @@ export default function HackathonsHub() {
               ]} 
             />
             <div className="max-w-4xl mt-8">
-              <div className="inline-block bg-[#FF6B2B] text-[#0A0A0A] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-6">Pédagogie active</div>
+              <div className="inline-block bg-[#8B2346] text-[#0A0A0A] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-6">Pédagogie active</div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 tracking-tight">
-                Les Geniathons <span className="text-[#FF6B2B]">Eugenia</span>
+                Les Geniathons <span className="text-[#8B2346]">Eugenia</span>
               </h1>
               <p className="text-lg text-[#9E9E9E] leading-relaxed max-w-2xl">
                 Oubliez les partiels traditionnels. Chez Eugenia School, l'évaluation se fait par la pratique. Plusieurs fois par an, nos étudiants relèvent des défis réels proposés par des entreprises de la tech (Doctolib, Carrefour, Spendesk...).
@@ -51,18 +51,18 @@ export default function HackathonsHub() {
                     </div>
                   </div>
                   
-                  <h2 className="text-2xl font-bold text-[#0A0A0A] mb-3 group-hover:text-[#FF6B2B] transition-colors">{hackathon.company}</h2>
+                  <h2 className="text-2xl font-bold text-[#0A0A0A] mb-3 group-hover:text-[#8B2346] transition-colors">{hackathon.company}</h2>
                   <p className="text-[#5C5C5C] mb-8 flex-1">{hackathon.description}</p>
                   
                   <div className="space-y-3 mb-8">
                     <div className="flex items-center gap-3 text-sm text-[#5C5C5C] font-medium">
-                      <Building className="w-4 h-4 text-[#FF6B2B]" /> {hackathon.sector}
+                      <Building className="w-4 h-4 text-[#8B2346]" /> {hackathon.sector}
                     </div>
                     <div className="flex items-center gap-3 text-sm text-[#5C5C5C] font-medium">
-                      <Clock className="w-4 h-4 text-[#FF6B2B]" /> {hackathon.duration}
+                      <Clock className="w-4 h-4 text-[#8B2346]" /> {hackathon.duration}
                     </div>
                     <div className="flex items-center gap-3 text-sm text-[#5C5C5C] font-medium">
-                      <Calendar className="w-4 h-4 text-[#FF6B2B]" /> Édition {hackathon.year}
+                      <Calendar className="w-4 h-4 text-[#8B2346]" /> Édition {hackathon.year}
                     </div>
                   </div>
                   

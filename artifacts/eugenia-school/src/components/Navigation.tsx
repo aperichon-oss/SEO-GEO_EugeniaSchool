@@ -4,13 +4,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowRight } from "lucide-react";
 
 const navLinks = [
+  { label: "L'école", href: "/ecole" },
   { label: "Formations", href: "/formations" },
-  { label: "École", href: "/ecole" },
-  { label: "Hackathons", href: "/hackathons" },
-  { label: "Métiers", href: "/metiers" },
-  { label: "Événements", href: "/evenements" },
+  { label: "Admissions", href: "/admissions" },
+  { label: "Campus", href: "/campus" },
+  { label: "Vie étudiante", href: "/vie-etudiante" },
   { label: "Blog", href: "/blog" },
-  { label: "Contact", href: "/contact" },
 ];
 
 export function Navigation() {
@@ -88,7 +87,7 @@ export function Navigation() {
         <div className="flex items-center gap-3">
           <Link
             href="/candidature"
-            className="hidden md:flex items-center gap-2 bg-[#FF6B2B] hover:bg-[#E5521A] text-white px-5 py-2.5 rounded-full font-bold text-[13px] transition-all group"
+            className="hidden md:flex items-center gap-2 bg-[#8B2346] hover:bg-[#6B1A35] text-white px-5 py-2.5 rounded-full font-bold text-[13px] transition-all group"
           >
             Candidater
             <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
@@ -130,7 +129,7 @@ export function Navigation() {
               <div className="p-5 flex items-center justify-between border-b border-[#E8E4DF]">
                 <Link href="/" onClick={() => setMobileMenuOpen(false)} aria-label="Eugenia School">
                   <span className="font-sans font-extrabold text-xl tracking-tight text-[#0A0A0A]">
-                    EUGENIA<span className="text-[#FF6B2B]">.</span>
+                    EUGENIA<span className="text-[#8B2346]">.</span>
                   </span>
                 </Link>
                 <button
@@ -166,7 +165,7 @@ export function Navigation() {
                 <Link
                   href="/candidature"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="flex justify-center items-center gap-2 bg-[#FF6B2B] hover:bg-[#E5521A] text-white px-6 py-3.5 rounded-full font-bold w-full transition-colors"
+                  className="flex justify-center items-center gap-2 bg-[#8B2346] hover:bg-[#6B1A35] text-white px-6 py-3.5 rounded-full font-bold w-full transition-colors"
                 >
                   Candidater
                   <ArrowRight className="w-4 h-4" />

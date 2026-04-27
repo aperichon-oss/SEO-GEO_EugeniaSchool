@@ -52,7 +52,7 @@ export default function BlogPost() {
           <div className="text-center">
             <h1 className="text-4xl font-extrabold text-[#0A0A0A] mb-4">Article introuvable</h1>
             <p className="text-[#5C5C5C] mb-8">Cet article n'existe pas ou a été déplacé.</p>
-            <Link href="/blog" className="inline-flex items-center gap-2 bg-[#FF6B2B] text-white px-6 py-3 rounded-full font-bold">
+            <Link href="/blog" className="inline-flex items-center gap-2 bg-[#8B2346] text-white px-6 py-3 rounded-full font-bold">
               <ArrowLeft className="w-4 h-4" /> Retour au blog
             </Link>
           </div>
@@ -83,8 +83,8 @@ export default function BlogPost() {
             />
             <div className="mt-10 flex flex-wrap items-center gap-4 mb-6">
               <div className="flex items-center gap-2">
-                <Tag className="w-4 h-4 text-[#FF6B2B]" />
-                <span className="text-sm font-bold text-[#FF6B2B]">{article.catLabel}</span>
+                <Tag className="w-4 h-4 text-[#8B2346]" />
+                <span className="text-sm font-bold text-[#8B2346]">{article.catLabel}</span>
               </div>
               <div className="flex items-center gap-2 text-sm text-[#9E9E9E]">
                 <Calendar className="w-4 h-4" /> {article.date}
@@ -128,7 +128,7 @@ export default function BlogPost() {
               </Link>
               <Link
                 href="/candidature"
-                className="inline-flex items-center gap-2 bg-[#FF6B2B] hover:bg-[#E5521A] text-white px-5 py-2.5 rounded-full font-bold text-sm transition-colors"
+                className="inline-flex items-center gap-2 bg-[#8B2346] hover:bg-[#6B1A35] text-white px-5 py-2.5 rounded-full font-bold text-sm transition-colors"
               >
                 Candidater à Eugenia School
               </Link>

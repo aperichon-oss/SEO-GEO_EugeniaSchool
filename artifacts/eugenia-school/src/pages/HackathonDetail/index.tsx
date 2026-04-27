@@ -43,7 +43,7 @@ export default function HackathonDetail() {
               </Link>
               
               <div className="flex items-center gap-4 mb-6 flex-wrap">
-                <div className="inline-block bg-[#FF6B2B] text-[#0A0A0A] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                <div className="inline-block bg-[#8B2346] text-[#0A0A0A] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
                   {hackathon.type}
                 </div>
                 <div className="inline-block bg-[#2A2A2A] text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
@@ -52,7 +52,7 @@ export default function HackathonDetail() {
               </div>
               
               <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold mb-6 tracking-tight">
-                Cas <span className="text-[#FF6B2B]">{hackathon.company}</span>
+                Cas <span className="text-[#8B2346]">{hackathon.company}</span>
               </h1>
               
               <p className="text-xl text-[#9E9E9E] leading-relaxed max-w-3xl mb-10">
@@ -61,11 +61,11 @@ export default function HackathonDetail() {
 
               <div className="flex flex-wrap gap-6 py-6 border-y border-[#2A2A2A]">
                 <div className="flex items-center gap-2">
-                  <Building className="w-5 h-5 text-[#FF6B2B]" />
+                  <Building className="w-5 h-5 text-[#8B2346]" />
                   <span className="font-medium">{hackathon.sector}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Clock className="w-5 h-5 text-[#FF6B2B]" />
+                  <Clock className="w-5 h-5 text-[#8B2346]" />
                   <span className="font-medium">{hackathon.duration} d'immersion</span>
                 </div>
               </div>
@@ -121,7 +121,7 @@ export default function HackathonDetail() {
                   <p className="text-[#5C5C5C] mb-8">
                     Les Geniathons sont réservés aux étudiants d'Eugenia School. Rejoignez-nous pour travailler sur les problématiques des plus belles entreprises tech.
                   </p>
-                  <Link href="/candidature" className="flex justify-between items-center bg-[#FF6B2B] text-[#0A0A0A] px-6 py-4 rounded-full font-bold hover:bg-[#0A0A0A] hover:text-white transition-colors group">
+                  <Link href="/candidature" className="flex justify-between items-center bg-[#8B2346] text-[#0A0A0A] px-6 py-4 rounded-full font-bold hover:bg-[#0A0A0A] hover:text-white transition-colors group">
                     Candidater
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </Link>

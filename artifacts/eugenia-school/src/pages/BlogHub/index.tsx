@@ -107,7 +107,7 @@ export default function BlogHub() {
                 Blog
               </div>
               <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
-                Actualités, conseils <span className="text-[#FF6B2B]">et inspiration</span>
+                Actualités, conseils <span className="text-[#8B2346]">et inspiration</span>
               </h1>
               <p className="text-lg text-[#9E9E9E] leading-relaxed">
                 IA, data, business, orientation — retrouvez toute l'actualité d'Eugenia School et des ressources pratiques pour construire votre carrière dans un monde en mutation.
@@ -160,19 +160,19 @@ export default function BlogHub() {
                     </div>
                     <div className="p-6 flex flex-col flex-1">
                       <div className="flex items-center gap-2 mb-3">
-                        <Tag className="w-3.5 h-3.5 text-[#FF6B2B]" />
-                        <span className="text-xs font-bold text-[#FF6B2B] uppercase tracking-wider">
+                        <Tag className="w-3.5 h-3.5 text-[#8B2346]" />
+                        <span className="text-xs font-bold text-[#8B2346] uppercase tracking-wider">
                           {article.catLabel}
                         </span>
                         <span className="text-xs text-[#9E9E9E] ml-auto">{article.date}</span>
                       </div>
-                      <h2 className="text-base font-extrabold text-[#0A0A0A] leading-snug mb-3 group-hover:text-[#FF6B2B] transition-colors">
+                      <h2 className="text-base font-extrabold text-[#0A0A0A] leading-snug mb-3 group-hover:text-[#8B2346] transition-colors">
                         {article.title}
                       </h2>
                       <p className="text-sm text-[#5C5C5C] leading-relaxed flex-1 line-clamp-3">
                         {article.excerpt}
                       </p>
-                      <div className="flex items-center gap-1.5 mt-5 text-sm font-bold text-[#0A0A0A] group-hover:text-[#FF6B2B] transition-colors">
+                      <div className="flex items-center gap-1.5 mt-5 text-sm font-bold text-[#0A0A0A] group-hover:text-[#8B2346] transition-colors">
                         Lire l'article <ArrowRight className="w-4 h-4" />
                       </div>
                     </div>

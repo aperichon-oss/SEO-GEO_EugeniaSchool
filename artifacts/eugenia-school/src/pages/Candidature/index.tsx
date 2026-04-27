@@ -75,7 +75,7 @@ export default function Candidature() {
                 Admissions 2026
               </div>
               <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
-                Rejoignez <span className="text-[#FF6B2B]">Eugenia School</span>
+                Rejoignez <span className="text-[#8B2346]">Eugenia School</span>
               </h1>
               <p className="text-lg text-[#9E9E9E] leading-relaxed">
                 Les candidatures pour Janvier et Septembre 2026 sont ouvertes. Hors Parcoursup — le processus est simple, humain et rapide.
@@ -94,7 +94,7 @@ export default function Candidature() {
                 <div className="space-y-8">
                   {etapes.map((e, i) => (
                     <div key={i} className="flex gap-5">
-                      <div className="flex-shrink-0 w-12 h-12 bg-[#FF6B2B] text-white rounded-xl flex items-center justify-center font-extrabold text-sm">
+                      <div className="flex-shrink-0 w-12 h-12 bg-[#8B2346] text-white rounded-xl flex items-center justify-center font-extrabold text-sm">
                         {e.num}
                       </div>
                       <div>
@@ -116,7 +116,7 @@ export default function Candidature() {
                       "Motivation et curiosité pour l'IA et le business",
                     ].map((item, i) => (
                       <li key={i} className="flex items-start gap-3 text-sm text-[#3A3A3A]">
-                        <CheckCircle2 className="w-4 h-4 text-[#FF6B2B] flex-shrink-0 mt-0.5" />
+                        <CheckCircle2 className="w-4 h-4 text-[#8B2346] flex-shrink-0 mt-0.5" />
                         {item}
                       </li>
                     ))}
@@ -128,7 +128,7 @@ export default function Candidature() {
               <div className="bg-white rounded-3xl border border-[#E8E4DF] p-8 shadow-sm">
                 {submitted ? (
                   <div className="text-center py-12">
-                    <div className="w-16 h-16 bg-[#FF6B2B] rounded-full flex items-center justify-center mx-auto mb-6">
+                    <div className="w-16 h-16 bg-[#8B2346] rounded-full flex items-center justify-center mx-auto mb-6">
                       <CheckCircle2 className="w-8 h-8 text-white" />
                     </div>
                     <h3 className="text-2xl font-extrabold text-[#0A0A0A] mb-3">Candidature reçue !</h3>
@@ -152,7 +152,7 @@ export default function Candidature() {
                             required
                             value={form.prenom}
                             onChange={handleChange}
-                            className="w-full border border-[#E8E4DF] rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#FF6B2B] transition-colors"
+                            className="w-full border border-[#E8E4DF] rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#8B2346] transition-colors"
                             placeholder="Votre prénom"
                           />
                         </div>
@@ -167,7 +167,7 @@ export default function Candidature() {
                             required
                             value={form.nom}
                             onChange={handleChange}
-                            className="w-full border border-[#E8E4DF] rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#FF6B2B] transition-colors"
+                            className="w-full border border-[#E8E4DF] rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#8B2346] transition-colors"
                             placeholder="Votre nom"
                           />
                         </div>
@@ -184,7 +184,7 @@ export default function Candidature() {
                           required
                           value={form.email}
                           onChange={handleChange}
-                          className="w-full border border-[#E8E4DF] rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#FF6B2B] transition-colors"
+                          className="w-full border border-[#E8E4DF] rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#8B2346] transition-colors"
                           placeholder="votre@email.com"
                         />
                       </div>
@@ -199,7 +199,7 @@ export default function Candidature() {
                           type="tel"
                           value={form.telephone}
                           onChange={handleChange}
-                          className="w-full border border-[#E8E4DF] rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#FF6B2B] transition-colors"
+                          className="w-full border border-[#E8E4DF] rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#8B2346] transition-colors"
                           placeholder="+33 6 00 00 00 00"
                         />
                       </div>
@@ -214,7 +214,7 @@ export default function Candidature() {
                           required
                           value={form.programme}
                           onChange={handleChange}
-                          className="w-full border border-[#E8E4DF] rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#FF6B2B] transition-colors bg-white"
+                          className="w-full border border-[#E8E4DF] rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#8B2346] transition-colors bg-white"
                         >
                           <option value="">Choisissez un programme</option>
                           <option>Bachelor AI Applied to Business</option>
@@ -233,7 +233,7 @@ export default function Candidature() {
                           required
                           value={form.annee}
                           onChange={handleChange}
-                          className="w-full border border-[#E8E4DF] rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#FF6B2B] transition-colors bg-white"
+                          className="w-full border border-[#E8E4DF] rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#8B2346] transition-colors bg-white"
                         >
                           <option value="">Votre niveau actuel</option>
                           <option>Terminale</option>
@@ -256,14 +256,14 @@ export default function Candidature() {
                           rows={3}
                           value={form.message}
                           onChange={handleChange}
-                          className="w-full border border-[#E8E4DF] rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#FF6B2B] transition-colors resize-none"
+                          className="w-full border border-[#E8E4DF] rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#8B2346] transition-colors resize-none"
                           placeholder="Décrivez brièvement votre projet et votre motivation..."
                         />
                       </div>
 
                       <button
                         type="submit"
-                        className="w-full flex justify-center items-center gap-2 bg-[#FF6B2B] hover:bg-[#E5521A] text-white px-6 py-4 rounded-xl font-bold text-sm transition-colors group"
+                        className="w-full flex justify-center items-center gap-2 bg-[#8B2346] hover:bg-[#6B1A35] text-white px-6 py-4 rounded-xl font-bold text-sm transition-colors group"
                       >
                         Envoyer ma candidature
                         <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />

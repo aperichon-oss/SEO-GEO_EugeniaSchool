@@ -43,7 +43,7 @@ export default function MetierDetail() {
               </Link>
               
               <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold mb-6 tracking-tight">
-                Devenir <span className="text-[#FF6B2B]">{metier.title}</span>
+                Devenir <span className="text-[#8B2346]">{metier.title}</span>
               </h1>
               
               <p className="text-xl text-[#9E9E9E] leading-relaxed max-w-3xl mb-12">
@@ -59,7 +59,7 @@ export default function MetierDetail() {
                 </div>
                 <div>
                   <div className="text-[#9E9E9E] text-xs font-bold uppercase tracking-wider mb-2">Salaire Senior (5+ ans)</div>
-                  <div className="text-3xl font-extrabold text-[#FF6B2B]">
+                  <div className="text-3xl font-extrabold text-[#8B2346]">
                     {metier.salary5years.min / 1000}k€ <span className="text-lg text-[#5C5C5C] font-normal mx-2">à</span> {metier.salary5years.max / 1000}k€
                   </div>
                 </div>
@@ -78,12 +78,12 @@ export default function MetierDetail() {
                 
                 <div>
                   <h2 className="text-3xl font-bold text-[#0A0A0A] mb-8 flex items-center gap-3">
-                    <Briefcase className="w-8 h-8 text-[#FF6B2B]" /> Missions principales
+                    <Briefcase className="w-8 h-8 text-[#8B2346]" /> Missions principales
                   </h2>
                   <div className="space-y-4">
                     {metier.missions.map((mission, index) => (
                       <div key={index} className="flex gap-4 p-6 bg-[#F5F2EE] rounded-2xl border border-[#E0DDD8]">
-                        <CheckCircle2 className="w-6 h-6 text-[#FF6B2B] shrink-0" />
+                        <CheckCircle2 className="w-6 h-6 text-[#8B2346] shrink-0" />
                         <span className="text-lg text-[#0A0A0A] font-medium">{mission}</span>
                       </div>
                     ))}
@@ -103,7 +103,7 @@ export default function MetierDetail() {
 
                 <div>
                   <h2 className="text-3xl font-bold text-[#0A0A0A] mb-8 flex items-center gap-3">
-                    <TrendingUp className="w-8 h-8 text-[#FF6B2B]" /> Évolution de carrière
+                    <TrendingUp className="w-8 h-8 text-[#8B2346]" /> Évolution de carrière
                   </h2>
                   <div className="flex flex-col sm:flex-row gap-4">
                     {metier.evolutions.map((evolution, index) => (
@@ -133,7 +133,7 @@ export default function MetierDetail() {
                       <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                     </Link>
                     
-                    <Link href="/formations/msc" className="flex justify-between items-center bg-[#0A0A0A] text-white p-4 rounded-xl font-bold hover:bg-[#FF6B2B] hover:text-[#0A0A0A] transition-colors group">
+                    <Link href="/formations/msc" className="flex justify-between items-center bg-[#0A0A0A] text-white p-4 rounded-xl font-bold hover:bg-[#8B2346] hover:text-[#0A0A0A] transition-colors group">
                       <div>
                         <div className="text-xs text-[#9E9E9E] group-hover:text-[#5C5C5C] uppercase tracking-wider mb-1">Bac+4/5 (2 ans)</div>
                         Master of Science

@@ -20,7 +20,7 @@ export function Breadcrumb({ items }: { items: BreadcrumbItem[] }) {
                 </span>
               ) : (
                 <>
-                  <Link href={item.href} className="text-secondary hover:text-[#FF6B2B] transition-colors text-xs uppercase tracking-widest font-medium">
+                  <Link href={item.href} className="text-secondary hover:text-[#8B2346] transition-colors text-xs uppercase tracking-widest font-medium">
                     {item.label}
                   </Link>
                   <ChevronRight className="w-4 h-4 mx-2 text-muted-foreground" />

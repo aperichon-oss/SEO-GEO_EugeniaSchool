@@ -102,7 +102,7 @@ export default function FAQ() {
 
             <div className="mt-12 text-center">
               <p className="text-[#5C5C5C] mb-4 font-medium">Vous ne trouvez pas la réponse à votre question ?</p>
-              <Link href="/contact" className="inline-flex items-center text-[#0A0A0A] font-bold hover:text-[#FF6B2B] underline underline-offset-4 decoration-2 decoration-[#0A0A0A] hover:decoration-[#FF6B2B] transition-colors">
+              <Link href="/contact" className="inline-flex items-center text-[#0A0A0A] font-bold hover:text-[#8B2346] underline underline-offset-4 decoration-2 decoration-[#0A0A0A] hover:decoration-[#8B2346] transition-colors">
                 Contactez notre équipe
               </Link>
             </div>

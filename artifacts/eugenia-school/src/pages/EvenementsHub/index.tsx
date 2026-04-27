@@ -67,7 +67,7 @@ export default function EvenementsHub() {
                 Événements
               </div>
               <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
-                Rencontrez <span className="text-[#FF6B2B]">Eugenia School</span>
+                Rencontrez <span className="text-[#8B2346]">Eugenia School</span>
               </h1>
               <p className="text-lg text-[#9E9E9E] leading-relaxed">
                 JPO, job datings alternance, webinaires, masterclasses… Participez à nos événements pour découvrir l'école, rencontrer nos équipes et nos entreprises partenaires.
@@ -88,7 +88,7 @@ export default function EvenementsHub() {
                   <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
                     <div className="flex-1">
                       <div className="flex flex-wrap items-center gap-3 mb-4">
-                        <span className="inline-block bg-[#FF6B2B] text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                        <span className="inline-block bg-[#8B2346] text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
                           {evt.tag}
                         </span>
                         <span className="text-sm text-[#5C5C5C] font-medium">{evt.type}</span>
@@ -97,15 +97,15 @@ export default function EvenementsHub() {
                       <p className="text-[#5C5C5C] leading-relaxed mb-5">{evt.description}</p>
                       <div className="flex flex-wrap gap-5 text-sm text-[#5C5C5C]">
                         <div className="flex items-center gap-2">
-                          <Calendar className="w-4 h-4 text-[#FF6B2B]" />
+                          <Calendar className="w-4 h-4 text-[#8B2346]" />
                           {evt.date}
                         </div>
                         <div className="flex items-center gap-2">
-                          <Clock className="w-4 h-4 text-[#FF6B2B]" />
+                          <Clock className="w-4 h-4 text-[#8B2346]" />
                           {evt.heure}
                         </div>
                         <div className="flex items-center gap-2">
-                          <MapPin className="w-4 h-4 text-[#FF6B2B]" />
+                          <MapPin className="w-4 h-4 text-[#8B2346]" />
                           {evt.lieu}
                         </div>
                       </div>
@@ -113,7 +113,7 @@ export default function EvenementsHub() {
                     <div className="flex-shrink-0">
                       <Link
                         href={`/evenements/${evt.slug}`}
-                        className="inline-flex items-center gap-2 bg-[#0A0A0A] hover:bg-[#FF6B2B] text-white px-6 py-3 rounded-full font-bold text-sm transition-colors group"
+                        className="inline-flex items-center gap-2 bg-[#0A0A0A] hover:bg-[#8B2346] text-white px-6 py-3 rounded-full font-bold text-sm transition-colors group"
                       >
                         S'inscrire
                         <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
@@ -137,7 +137,7 @@ export default function EvenementsHub() {
             </p>
             <Link
               href="/candidature"
-              className="inline-flex items-center gap-2 bg-[#FF6B2B] hover:bg-[#E5521A] text-white px-8 py-4 rounded-full font-bold transition-colors"
+              className="inline-flex items-center gap-2 bg-[#8B2346] hover:bg-[#6B1A35] text-white px-8 py-4 rounded-full font-bold transition-colors"
             >
               S'inscrire aux événements <ArrowRight className="w-5 h-5" />
             </Link>

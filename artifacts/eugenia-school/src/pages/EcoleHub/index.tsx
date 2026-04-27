@@ -79,7 +79,7 @@ export default function EcoleHub() {
               <div className="grid md:grid-cols-3 gap-8 mb-16">
                 <div className="text-center">
                   <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Target className="w-8 h-8 text-blue-600" />
+                    <Target className="w-8 h-8 text-[#8B2346]" />
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-2">Nous sommes Data-driven</h3>
                   <p className="text-gray-600">
@@ -120,7 +120,7 @@ export default function EcoleHub() {
                     </p>
                     <Link
                       href="/notre-adn"
-                      className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold"
+                      className="inline-flex items-center gap-2 text-[#8B2346] hover:text-[#6B1A35] font-semibold"
                     >
                       Brochure
                       <ArrowRight className="w-4 h-4" />
@@ -154,7 +154,7 @@ export default function EcoleHub() {
                   </p>
                   <Link
                     href="/methode-eugenia"
-                    className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold"
+                    className="inline-flex items-center gap-2 text-[#8B2346] hover:text-[#6B1A35] font-semibold"
                   >
                     Notre méthode
                     <ArrowRight className="w-4 h-4" />
@@ -194,7 +194,7 @@ export default function EcoleHub() {
                   </p>
                   <Link
                     href="/evenements"
-                    className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold"
+                    className="inline-flex items-center gap-2 text-[#8B2346] hover:text-[#6B1A35] font-semibold"
                   >
                     En savoir plus
                     <ArrowRight className="w-4 h-4" />
@@ -222,14 +222,14 @@ export default function EcoleHub() {
                   >
                     <div className="flex items-center gap-4 mb-4">
                       <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center group-hover:bg-blue-200 transition-colors duration-200">
-                        <section.icon className="w-6 h-6 text-blue-600" />
+                        <section.icon className="w-6 h-6 text-[#8B2346]" />
                       </div>
-                      <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors duration-200">
+                      <h3 className="text-xl font-bold text-gray-900 group-hover:text-[#8B2346] transition-colors duration-200">
                         {section.title}
                       </h3>
                     </div>
                     <p className="text-gray-600 mb-6">{section.description}</p>
-                    <div className="flex items-center text-blue-600 font-semibold group-hover:text-blue-700 transition-colors duration-200">
+                    <div className="flex items-center text-[#8B2346] font-semibold group-hover:text-blue-700 transition-colors duration-200">
                       En savoir plus
                       <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200" />
                     </div>
@@ -241,7 +241,7 @@ export default function EcoleHub() {
         </section>
 
         {/* CTA */}
-        <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+        <section className="py-20 bg-gradient-to-r from-[#8B2346] to-[#6B1A35] text-white">
           <div className="container mx-auto px-6 text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">EUGENIA SCHOOL - DEVENEZ UN GAME CHANGER</h2>
             <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
@@ -250,14 +250,14 @@ export default function EcoleHub() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/candidature"
-                className="inline-flex items-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200"
+                className="inline-flex items-center gap-2 bg-white text-[#8B2346] px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200"
               >
                 Candidature
                 <ArrowRight className="w-5 h-5" />
               </Link>
               <Link
                 href="/brochure"
-                className="inline-flex items-center gap-2 border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors duration-200"
+                className="inline-flex items-center gap-2 border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-[#8B2346] transition-colors duration-200"
               >
                 Brochure
                 <ArrowRight className="w-5 h-5" />
