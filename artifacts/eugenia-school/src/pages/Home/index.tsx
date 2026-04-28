@@ -453,7 +453,10 @@ export default function Home() {
                 >
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="text-xl font-bold">{metier.title}</h3>
-                    <span className="text-2xl font-bold text-[#8B2346]">{metier.salaryEntry.min}-{metier.salaryEntry.max}k</span>
+                   const formatK = (value) => Math.round(value / 1000);
+                    <span className="text-2xl font-bold text-[#8B2346]">
+                      {formatK(metier.salaryEntry.min)}-{formatK(metier.salaryEntry.max)}k
+                    </span>
                   </div>
                   <p className="text-gray-300 text-sm mb-4">{metier.description}</p>
                   <Link
