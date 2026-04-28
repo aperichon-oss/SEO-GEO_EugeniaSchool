@@ -8,8 +8,8 @@ const navLinks = [
   { label: "Formations", href: "/formations" },
   { label: "Admissions", href: "/admissions" },
   { label: "Campus", href: "/campus" },
-  { label: "Vie étudiante", href: "/vie-etudiante" },
-  { label: "Blog", href: "/blog" },
+  { label: "Étudiants", href: "/etudiants" },
+  { label: "Partenaires", href: "/partenaires" },
 ];
 
 export function Navigation() {
