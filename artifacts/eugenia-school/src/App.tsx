@@ -30,7 +30,6 @@ import ApprochePedagogique from "@/pages/ApprochePedagogique";
 import MethodeEugenia from "@/pages/MethodeEugenia";
 import Equipe from "@/pages/Equipe";
 import CampusParis from "@/pages/CampusParis";
-import CampusLyon from "@/pages/CampusLyon";
 import ProcessusAdmission from "@/pages/ProcessusAdmission";
 import Financement from "@/pages/Financement";
 import EtudiantsHub from "@/pages/EtudiantsHub";
@@ -94,9 +93,7 @@ function Router() {
       </Route>
 
       {/* ==================== CAMPUS ==================== */}
-      <Route path="/campus" component={CampusHub} />
       <Route path="/campus/paris" component={CampusParis} />
-      <Route path="/campus/lyon" component={CampusLyon} />
 
       {/* ==================== ADMISSIONS ==================== */}
       <Route path="/admissions" component={AdmissionsHub} />
