@@ -1,21 +1,164 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ArrowRight } from "lucide-react";
+import { Menu, X, ArrowRight, ChevronDown } from "lucide-react";
 
-const navLinks = [
-  { label: "L'école", href: "/ecole" },
-  { label: "Formations", href: "/formations" },
-  { label: "Admissions", href: "/admissions" },
-  { label: "Campus", href: "/campus" },
-  { label: "Étudiants", href: "/etudiants" },
-  { label: "Partenaires", href: "/partenaires" },
+interface SubLink {
+  label: string;
+  href: string;
+  description?: string;
+}
+
+interface NavItem {
+  label: string;
+  href: string;
+  subLinks?: SubLink[];
+}
+
+const navLinks: NavItem[] = [
+  {
+    label: "L'école",
+    href: "/ecole",
+    subLinks: [
+      { label: "Présentation", href: "/ecole", description: "Découvrir Eugenia School" },
+      { label: "Notre ADN", href: "/ecole/adn", description: "Nos valeurs et notre vision" },
+      { label: "Équipe pédagogique", href: "/ecole/equipe-pedagogique", description: "Nos intervenants experts" },
+      { label: "Méthode Eugenia", href: "/ecole/methode", description: "Notre approche unique" },
+      { label: "Certifications", href: "/ecole/certifications", description: "Qualiopi, RNCP, France Compétences" },
+      { label: "Groupe Albert School", href: "/ecole/groupe-albert-school", description: "Notre groupe d'enseignement" },
+    ],
+  },
+  {
+    label: "Formations",
+    href: "/formations",
+    subLinks: [
+      { label: "Nos programmes", href: "/formations", description: "Comparateur Bachelor vs MSc" },
+      { label: "Bachelor IA & Business", href: "/formations/bachelor", description: "Bac+3 en alternance" },
+      { label: "Bachelor 1ère année", href: "/formations/bachelor-1a", description: "Admission post-bac" },
+      { label: "MSc IA & Business", href: "/formations/msc", description: "Bac+5 double diplôme GEM" },
+      { label: "Certification Data", href: "/formations/certification-data", description: "Formation certifiante" },
+      { label: "Programme détaillé", href: "/formations/programme-annee-par-annee", description: "Curriculum complet" },
+    ],
+  },
+  {
+    label: "Campus",
+    href: "/campus",
+    subLinks: [
+      { label: "Nos campus", href: "/campus", description: "Vue d'ensemble" },
+      { label: "Paris", href: "/campus/paris", description: "Campus principal" },
+      { label: "Lyon", href: "/campus/lyon", description: "Nouveau campus 2025" },
+    ],
+  },
+  {
+    label: "Hackathons",
+    href: "/hackathons",
+    subLinks: [
+      { label: "Tous les hackathons", href: "/hackathons", description: "Business Deep Dives & Géniathons" },
+      { label: "L'Oréal 2024", href: "/hackathons/loreal-2024", description: "Cas SQL & médiacole" },
+      { label: "Carrefour 2024", href: "/hackathons/carrefour-2024", description: "KPIs retail & data achats" },
+      { label: "Mistral x AWS", href: "/hackathons/alt-mistral-aws", description: "Marketing IA" },
+      { label: "Google Cloud", href: "/hackathons/google-cloud", description: "BigQuery & data engineering" },
+    ],
+  },
+  {
+    label: "Métiers",
+    href: "/metiers",
+    subLinks: [
+      { label: "Débouchés", href: "/metiers", description: "Carrières après Eugenia" },
+      { label: "Business Analyst", href: "/metiers/business-analyst", description: "Salaire & parcours" },
+      { label: "Data Analyst", href: "/metiers/data-analyst", description: "Formation & compétences" },
+      { label: "Growth Hacker", href: "/metiers/growth-hacker", description: "Marketing digital" },
+      { label: "Consultant IA", href: "/metiers/consultant-ia", description: "Conseil en transformation" },
+      { label: "Data Scientist", href: "/metiers/data-scientist", description: "Machine Learning" },
+    ],
+  },
+  {
+    label: "Étudiants",
+    href: "/etudiants",
+    subLinks: [
+      { label: "Vie étudiante", href: "/etudiants", description: "Découvrir le quotidien" },
+      { label: "Associations", href: "/etudiants/associations", description: "BDE, Junior Entreprise, clubs" },
+      { label: "Entrepreneuriat", href: "/etudiants/entrepreneuriat", description: "Incubateur & projets" },
+      { label: "Alumni", href: "/etudiants/alumni", description: "Témoignages & parcours" },
+      { label: "Vie campus", href: "/etudiants/vie-campus", description: "Logement, événements" },
+    ],
+  },
+  {
+    label: "Admissions",
+    href: "/admissions",
+    subLinks: [
+      { label: "Candidater", href: "/admissions", description: "Vue d'ensemble" },
+      { label: "Processus", href: "/admissions/processus", description: "Étapes de candidature" },
+      { label: "Financement", href: "/admissions/financement", description: "CPF, bourses, OPCO" },
+      { label: "Portes ouvertes", href: "/admissions/journees-portes-ouvertes", description: "Prochaines dates" },
+    ],
+  },
 ];
+
+function DropdownMenu({ item, isOpen, onMouseEnter, onMouseLeave }: {
+  item: NavItem;
+  isOpen: boolean;
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
+}) {
+  const [location] = useLocation();
+  const isActive = location === item.href || location.startsWith(item.href + "/");
+
+  return (
+    <div
+      className="relative"
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
+      <Link
+        href={item.href}
+        className={`flex items-center gap-1 px-3 py-2 rounded-lg text-[14px] font-medium transition-colors ${
+          isActive
+            ? "text-[#0A0A0A] bg-[#F5F2EE]"
+            : "text-[#3A3A3A] hover:text-[#0A0A0A] hover:bg-[#F5F2EE]"
+        }`}
+      >
+        {item.label}
+        {item.subLinks && <ChevronDown className={`w-3.5 h-3.5 transition-transform ${isOpen ? "rotate-180" : ""}`} />}
+      </Link>
+
+      <AnimatePresence>
+        {isOpen && item.subLinks && (
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 8 }}
+            transition={{ duration: 0.15 }}
+            className="absolute top-full left-0 mt-1 w-72 bg-white rounded-xl shadow-xl border border-[#E8E4DF] overflow-hidden z-50"
+          >
+            <div className="py-2">
+              {item.subLinks.map((sub) => (
+                <Link
+                  key={sub.href}
+                  href={sub.href}
+                  className="block px-4 py-2.5 hover:bg-[#F5F2EE] transition-colors"
+                >
+                  <span className="block text-[14px] font-medium text-[#0A0A0A]">{sub.label}</span>
+                  {sub.description && (
+                    <span className="block text-[12px] text-[#6B6B6B] mt-0.5">{sub.description}</span>
+                  )}
+                </Link>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
 
 export function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [expandedMobileSection, setExpandedMobileSection] = useState<string | null>(null);
   const [location] = useLocation();
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -25,7 +168,17 @@ export function Navigation() {
 
   useEffect(() => {
     setMobileMenuOpen(false);
+    setExpandedMobileSection(null);
   }, [location]);
+
+  const handleMouseEnter = (label: string) => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    setOpenDropdown(label);
+  };
+
+  const handleMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => setOpenDropdown(null), 150);
+  };
 
   return (
     <header
@@ -38,7 +191,7 @@ export function Navigation() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2" aria-label="Eugenia School — Accueil">
           <svg width="120" height="22" viewBox="0 0 221 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-[#0A0A0A]">
-            <g clip-path="url(#clip0_176_760)">
+            <g clipPath="url(#clip0_176_760)">
               <path d="M45.7517 13.7805H54.9256V16.131H48.4324V19.0894H53.8722V21.4216H48.4324V24.7154H54.9256V27.0632H45.7517V13.7805Z" fill="currentColor"></path>
               <path d="M63.9188 27.2493C62.834 27.2493 61.8776 27.0475 61.0522 26.6413C60.2267 26.2326 59.5874 25.622 59.1314 24.8097C58.6755 23.9948 58.4475 22.9781 58.4475 21.757V13.7832H61.1858V21.6652C61.1858 22.7868 61.4347 23.6017 61.9352 24.1074C62.4357 24.6132 63.0961 24.8647 63.9215 24.8647C64.7469 24.8647 65.4308 24.6132 65.9313 24.1074C66.4318 23.6017 66.6807 22.7894 66.6807 21.6652V13.7832H69.4007V21.757C69.4007 22.9781 69.1727 23.9948 68.7168 24.8097C68.2608 25.6246 67.6214 26.2352 66.8013 26.6413C65.9811 27.0475 65.022 27.2493 63.9241 27.2493H63.9188Z" fill="currentColor"></path>
               <path d="M82.2142 27.0632V25.7871C81.9417 26.2064 81.5067 26.5575 80.9093 26.8431C80.3092 27.1261 79.5912 27.2702 78.7553 27.2702C77.5945 27.2702 76.5595 26.9846 75.6476 26.4081C74.7331 25.8343 74.0151 25.0377 73.4936 24.0236C72.9696 23.0069 72.7075 21.8303 72.7075 20.4966C72.7075 19.1628 72.9748 17.9627 73.512 16.9198C74.0492 15.8768 74.7855 15.0619 75.7236 14.4697C76.6617 13.8775 77.7334 13.5814 78.9414 13.5814C80.359 13.5814 81.5277 13.9299 82.4448 14.6269C83.362 15.3239 84.0328 16.2673 84.4547 17.4648L81.8448 18.3348C81.6718 17.5827 81.339 17.001 80.8464 16.587C80.3538 16.1729 79.7301 15.9659 78.9781 15.9659C78.2889 15.9659 77.6731 16.152 77.1386 16.5215C76.6014 16.8909 76.1848 17.4124 75.8886 18.0832C75.5925 18.754 75.4458 19.5427 75.4458 20.4415C75.4458 21.3403 75.5952 22.1317 75.8965 22.8104C76.2005 23.489 76.6171 24.0131 77.1543 24.3904C77.6915 24.7678 78.3099 24.9538 79.0148 24.9538C79.8795 24.9538 80.5791 24.6865 81.1137 24.152C81.6482 23.6174 81.9443 22.9388 81.9941 22.1264H78.7763V19.8153H84.6564V27.0658H82.2142V27.0632Z" fill="currentColor"></path>
@@ -63,30 +216,23 @@ export function Navigation() {
           </svg>
         </Link>
 
-        {/* Desktop Nav */}
-        <nav aria-label="Navigation principale" className="hidden lg:flex items-center h-full gap-1">
-          {navLinks.map((item) => {
-            const isActive = location === item.href || location.startsWith(item.href + "/");
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`px-4 py-2 rounded-lg text-[14px] font-medium transition-colors ${
-                  isActive
-                    ? "text-[#0A0A0A] bg-[#F5F2EE]"
-                    : "text-[#3A3A3A] hover:text-[#0A0A0A] hover:bg-[#F5F2EE]"
-                }`}
-              >
-                {item.label}
-              </Link>
-            );
-          })}
+        {/* Desktop Nav with Dropdowns */}
+        <nav aria-label="Navigation principale" className="hidden lg:flex items-center h-full gap-0.5">
+          {navLinks.map((item) => (
+            <DropdownMenu
+              key={item.href}
+              item={item}
+              isOpen={openDropdown === item.label}
+              onMouseEnter={() => handleMouseEnter(item.label)}
+              onMouseLeave={handleMouseLeave}
+            />
+          ))}
         </nav>
 
         {/* CTA & Mobile Toggle */}
         <div className="flex items-center gap-3">
           <Link
-            href="/candidature"
+            href="/admissions"
             className="hidden md:flex items-center gap-2 bg-[#8B2346] hover:bg-[#6B1A35] text-white px-5 py-2.5 rounded-full font-bold text-[13px] transition-all group"
           >
             Candidater
@@ -121,7 +267,7 @@ export function Navigation() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "tween", duration: 0.28 }}
-              className="fixed top-0 right-0 h-full w-full max-w-[320px] bg-white shadow-2xl z-50 flex flex-col"
+              className="fixed top-0 right-0 h-full w-full max-w-[340px] bg-white shadow-2xl z-50 flex flex-col"
               role="dialog"
               aria-modal="true"
               aria-label="Menu de navigation"
@@ -141,29 +287,84 @@ export function Navigation() {
                 </button>
               </div>
 
-              <nav aria-label="Navigation mobile" className="p-5 flex-1 flex flex-col gap-1 overflow-y-auto">
+              <nav aria-label="Navigation mobile" className="p-4 flex-1 flex flex-col gap-1 overflow-y-auto">
                 {navLinks.map((item) => {
+                  const isExpanded = expandedMobileSection === item.label;
                   const isActive = location === item.href || location.startsWith(item.href + "/");
+
                   return (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      onClick={() => setMobileMenuOpen(false)}
-                      className={`px-4 py-3 rounded-xl text-base font-semibold transition-colors ${
-                        isActive
-                          ? "text-[#0A0A0A] bg-[#F5F2EE]"
-                          : "text-[#3A3A3A] hover:text-[#0A0A0A] hover:bg-[#F5F2EE]"
-                      }`}
-                    >
-                      {item.label}
-                    </Link>
+                    <div key={item.href}>
+                      <button
+                        onClick={() => setExpandedMobileSection(isExpanded ? null : item.label)}
+                        className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold transition-colors ${
+                          isActive
+                            ? "text-[#0A0A0A] bg-[#F5F2EE]"
+                            : "text-[#3A3A3A] hover:text-[#0A0A0A] hover:bg-[#F5F2EE]"
+                        }`}
+                      >
+                        {item.label}
+                        {item.subLinks && (
+                          <ChevronDown className={`w-4 h-4 transition-transform ${isExpanded ? "rotate-180" : ""}`} />
+                        )}
+                      </button>
+
+                      <AnimatePresence>
+                        {isExpanded && item.subLinks && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.2 }}
+                            className="overflow-hidden"
+                          >
+                            <div className="pl-4 py-2 space-y-1">
+                              {item.subLinks.map((sub) => (
+                                <Link
+                                  key={sub.href}
+                                  href={sub.href}
+                                  onClick={() => setMobileMenuOpen(false)}
+                                  className="block px-4 py-2.5 rounded-lg text-[14px] text-[#5C5C5C] hover:text-[#0A0A0A] hover:bg-[#F5F2EE] transition-colors"
+                                >
+                                  {sub.label}
+                                </Link>
+                              ))}
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
                   );
                 })}
+
+                {/* Additional mobile links */}
+                <div className="mt-4 pt-4 border-t border-[#E8E4DF]">
+                  <Link
+                    href="/partenaires"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block px-4 py-3 rounded-xl text-base font-semibold text-[#3A3A3A] hover:text-[#0A0A0A] hover:bg-[#F5F2EE] transition-colors"
+                  >
+                    Partenaires
+                  </Link>
+                  <Link
+                    href="/blog"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block px-4 py-3 rounded-xl text-base font-semibold text-[#3A3A3A] hover:text-[#0A0A0A] hover:bg-[#F5F2EE] transition-colors"
+                  >
+                    Blog
+                  </Link>
+                  <Link
+                    href="/faq"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block px-4 py-3 rounded-xl text-base font-semibold text-[#3A3A3A] hover:text-[#0A0A0A] hover:bg-[#F5F2EE] transition-colors"
+                  >
+                    FAQ
+                  </Link>
+                </div>
               </nav>
 
               <div className="p-5 border-t border-[#E8E4DF]">
                 <Link
-                  href="/candidature"
+                  href="/admissions"
                   onClick={() => setMobileMenuOpen(false)}
                   className="flex justify-center items-center gap-2 bg-[#8B2346] hover:bg-[#6B1A35] text-white px-6 py-3.5 rounded-full font-bold w-full transition-colors"
                 >
