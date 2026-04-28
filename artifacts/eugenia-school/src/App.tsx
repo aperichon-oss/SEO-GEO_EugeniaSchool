@@ -19,7 +19,6 @@ import BlogHub from "@/pages/BlogHub";
 import BlogPost from "@/pages/BlogPost";
 import Candidature from "@/pages/Candidature";
 import AdmissionsHub from "@/pages/AdmissionsHub";
-import CampusHub from "@/pages/CampusHub";
 import VieEtudianteHub from "@/pages/VieEtudianteHub";
 import PlaceholderPage from "@/pages/PlaceholderPage";
 import NotFound from "@/pages/not-found";
