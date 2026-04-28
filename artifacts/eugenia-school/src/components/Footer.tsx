@@ -71,7 +71,6 @@ const footerSections = [
 
 const secondaryLinks = [
   { label: "Campus Paris", href: "/campus/paris" },
-  { label: "Campus Lyon", href: "/campus/lyon" },
   { label: "Partenaires", href: "/partenaires" },
   { label: "Presse", href: "/presse" },
   { label: "Blog", href: "/blog" },
@@ -85,7 +84,7 @@ export function Footer() {
   return (
     <footer className="bg-[#0A0A0A] text-white pt-20 pb-10 border-t border-[#1E1E1E]">
       <div className="container mx-auto px-6">
-        
+
         {/* Main Footer Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 mb-16">
           {footerSections.map((section) => (
@@ -126,7 +125,7 @@ export function Footer() {
 
         {/* Logo & Social Row */}
         <div className="pt-8 border-t border-[#1E1E1E] flex flex-col lg:flex-row justify-between items-center gap-8">
-          
+
           {/* Logo & Description */}
           <div className="flex flex-col lg:flex-row items-center gap-6">
             <Link href="/" className="inline-block" aria-label="Eugenia School">
@@ -135,7 +134,7 @@ export function Footer() {
               </span>
             </Link>
             <p className="text-[#6B6B6B] text-sm text-center lg:text-left max-w-md">
-              L&apos;école privée parisienne spécialisée en IA appliquée au business. 
+              L&apos;école privée parisienne spécialisée en IA appliquée au business.
               Formation Bachelor et MSc en alternance.
             </p>
           </div>
