@@ -54,7 +54,7 @@ export default function CampusParis() {
                 Campus Paris
               </h1>
               <p className="text-xl text-gray-300 mb-8 max-w-2xl">
-                Au coeur de la capitale, notre campus principal vous accueille dans un environnement 
+                Au coeur de la capitale, notre campus principal vous accueille dans un environnement
                 moderne et stimulant, idéalement situé pour vous connecter à l'écosystème parisien.
               </p>
               <div className="flex flex-wrap gap-4">
@@ -86,7 +86,7 @@ export default function CampusParis() {
                     Un emplacement stratégique
                   </h2>
                   <p className="text-gray-600 leading-relaxed mb-8">
-                    Notre campus est situé au 46 rue de l'Arbre Sec, dans le 1er arrondissement de Paris. 
+                    Notre campus est situé au 18 rue de Paradis, dans le 10ème arrondissement de Paris.
                     Un quartier dynamique au carrefour des mondes de la culture, des affaires et de l'innovation.
                   </p>
 
@@ -97,7 +97,7 @@ export default function CampusParis() {
                       </div>
                       <div>
                         <p className="font-semibold text-gray-900">Adresse</p>
-                        <p className="text-gray-600">46 Rue de l'Arbre Sec<br />75001 Paris, France</p>
+                        <p className="text-gray-600">18 rue de Paradis<br />75010 Paris, France</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
@@ -107,9 +107,9 @@ export default function CampusParis() {
                       <div>
                         <p className="font-semibold text-gray-900">Transports</p>
                         <p className="text-gray-600">
-                          Métro Louvre-Rivoli (Ligne 1) - 3 min<br />
-                          Métro Châtelet (Lignes 1, 4, 7, 11, 14) - 5 min<br />
-                          RER A, B, D (Châtelet) - 7 min
+                          Métro Chateaux D'Eau (Ligne 4) - 3 min<br />
+                          Métro Gare de l'Est (Lignes 2, 4, 5, 7) - 5 min<br />
+                          RER B, D, E (Gare de l'Est) - 5 min
                         </p>
                       </div>
                     </div>
@@ -120,8 +120,7 @@ export default function CampusParis() {
                       <div>
                         <p className="font-semibold text-gray-900">Horaires d'ouverture</p>
                         <p className="text-gray-600">
-                          Lundi - Vendredi : 8h30 - 19h00<br />
-                          Samedi : 9h00 - 13h00 (événements)
+                          Lundi - Vendredi : 7h45 - 19h00<br />
                         </p>
                       </div>
                     </div>
@@ -131,7 +130,7 @@ export default function CampusParis() {
                 <div className="relative">
                   <div className="bg-gray-200 rounded-2xl overflow-hidden aspect-square">
                     <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.8729!2d2.3412!3d48.8600!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1e5b3a!2s46%20Rue%20de%20l'Arbre%20Sec%2C%2075001%20Paris!5e0!3m2!1sfr!2sfr!4v1234567890"
+                      src="https://www.google.com/maps/place/18+Rue+de+Paradis,+75010+Paris/@48.8748647,2.3488397,17z/data=!3m1!4b1!4m6!3m5!1s0x47e66e1317f46ef3:0x1880f11531ba7a37!8m2!3d48.8748613!4d2.3537106!16s%2Fg%2F11b8v5bs7m?entry=ttu&g_ep=EgoyMDI2MDQyNi4wIKXMDSoASAFQAw%3D%3D"
                       width="100%"
                       height="100%"
                       style={{ border: 0, minHeight: "400px" }}
