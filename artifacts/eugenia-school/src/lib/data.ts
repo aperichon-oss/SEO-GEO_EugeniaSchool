@@ -78,6 +78,85 @@ export const hackathons = [
       { day: "Apres-midi", title: "Ideation et prototype", content: "Sprint d'ideation et developpement du prototype de solution IA." },
       { day: "Soiree", title: "Pitch final", content: "Presentation des solutions devant le jury Welcome to the Jungle." }
     ]
+  },
+  {
+    slug: "snapchat",
+    company: "Snapchat",
+    type: "Geniathon MSc",
+    sector: "Tech / Reseaux sociaux",
+    duration: "3 jours",
+    year: 2024,
+    topic: "Data analytics, comportement utilisateurs, IA publicitaire",
+    description: "Analyse des donnees utilisateurs et optimisation des campagnes publicitaires avec l'IA.",
+    skills: ["Data analytics", "Machine Learning", "Marketing digital"],
+    days: [
+      { day: "Jour 1", title: "Immersion Snap", content: "Decouverte des enjeux data de Snapchat et acces aux jeux de donnees anonymises." },
+      { day: "Jour 2", title: "Modelisation", content: "Developpement de modeles predictifs pour l'engagement utilisateur." },
+      { day: "Jour 3", title: "Presentation", content: "Pitch des solutions devant les equipes data de Snapchat." }
+    ]
+  },
+  {
+    slug: "air-france",
+    company: "Air France",
+    type: "Business Deep Dive Bachelor",
+    sector: "Transport aerien",
+    duration: "2 semaines",
+    year: 2024,
+    topic: "Revenue management, yield optimization, pricing dynamique",
+    description: "Optimisation des strategies de pricing et revenue management pour Air France.",
+    skills: ["Revenue management", "Excel avance", "Analyse predictive"],
+    days: [
+      { day: "Semaine 1", title: "Analyse des donnees", content: "Immersion dans les donnees de reservation et tarification Air France." },
+      { day: "Semaine 2", title: "Recommandations", content: "Presentation des strategies d'optimisation du yield management." }
+    ]
+  },
+  {
+    slug: "google-cloud",
+    company: "Google Cloud",
+    type: "Geniathon MSc",
+    sector: "Cloud / Tech",
+    duration: "3 jours",
+    year: 2025,
+    topic: "BigQuery, data engineering, architecture cloud",
+    description: "Conception d'architectures data scalables sur Google Cloud Platform.",
+    skills: ["BigQuery", "Data engineering", "Cloud architecture"],
+    days: [
+      { day: "Jour 1", title: "Formation GCP", content: "Certification acceleree Google Cloud et prise en main de BigQuery." },
+      { day: "Jour 2", title: "Challenge data", content: "Construction d'un pipeline data complet sur GCP." },
+      { day: "Jour 3", title: "Demo", content: "Demonstration des architectures developpees devant les experts Google." }
+    ]
+  },
+  {
+    slug: "societe-generale",
+    company: "Societe Generale",
+    type: "Business Deep Dive Bachelor",
+    sector: "Banque / Finance",
+    duration: "3 semaines",
+    year: 2024,
+    topic: "Risk management, compliance data, reporting reglementaire",
+    description: "Analyse des donnees de risque et conformite pour le secteur bancaire.",
+    skills: ["Risk analytics", "Compliance", "Power BI"],
+    days: [
+      { day: "Semaine 1", title: "Contexte reglementaire", content: "Formation aux enjeux de compliance et de gestion des risques bancaires." },
+      { day: "Semaine 2", title: "Analyse des donnees", content: "Travail sur les donnees de risque avec les equipes Societe Generale." },
+      { day: "Semaine 3", title: "Dashboards", content: "Creation de tableaux de bord de suivi des risques et presentation finale." }
+    ]
+  },
+  {
+    slug: "capgemini",
+    company: "Capgemini",
+    type: "Geniathon MSc",
+    sector: "Conseil / IT",
+    duration: "3 jours",
+    year: 2025,
+    topic: "Transformation digitale, IA en entreprise, consulting data",
+    description: "Cas de conseil en transformation digitale avec les equipes Capgemini Invent.",
+    skills: ["Conseil", "Transformation digitale", "Presentation"],
+    days: [
+      { day: "Jour 1", title: "Brief client", content: "Presentation d'un cas reel de transformation digitale par Capgemini Invent." },
+      { day: "Jour 2", title: "Travail en equipe", content: "Elaboration de la strategie de transformation et roadmap IA." },
+      { day: "Jour 3", title: "Soutenance", content: "Presentation des recommandations devant un jury de consultants seniors." }
+    ]
   }
 ];
 
