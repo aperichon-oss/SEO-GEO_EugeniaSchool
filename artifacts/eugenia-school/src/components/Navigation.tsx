@@ -44,9 +44,7 @@ const navLinks: NavItem[] = [
     label: "Campus",
     href: "/campus",
     subLinks: [
-      { label: "Nos campus", href: "/campus", description: "Vue d'ensemble" },
-      { label: "Paris", href: "/campus/paris", description: "Campus principal" },
-      { label: "Lyon", href: "/campus/lyon", description: "Nouveau campus 2025" },
+      { label: "Paris", href: "/campus/paris", description: "Campus principal" }
     ],
   },
   {
@@ -112,11 +110,10 @@ function DropdownMenu({ item, isOpen, onMouseEnter, onMouseLeave }: {
     >
       <Link
         href={item.href}
-        className={`flex items-center gap-1 px-3 py-2 rounded-lg text-[14px] font-medium transition-colors ${
-          isActive
+        className={`flex items-center gap-1 px-3 py-2 rounded-lg text-[14px] font-medium transition-colors ${isActive
             ? "text-[#0A0A0A] bg-[#F5F2EE]"
             : "text-[#3A3A3A] hover:text-[#0A0A0A] hover:bg-[#F5F2EE]"
-        }`}
+          }`}
       >
         {item.label}
         {item.subLinks && <ChevronDown className={`w-3.5 h-3.5 transition-transform ${isOpen ? "rotate-180" : ""}`} />}
@@ -182,9 +179,8 @@ export function Navigation() {
 
   return (
     <header
-      className={`sticky top-0 z-40 bg-white transition-all duration-300 ${
-        scrolled ? "shadow-sm border-b border-[#E8E4DF]" : ""
-      }`}
+      className={`sticky top-0 z-40 bg-white transition-all duration-300 ${scrolled ? "shadow-sm border-b border-[#E8E4DF]" : ""
+        }`}
     >
       <div className="container mx-auto px-6 h-20 flex items-center justify-between">
 
@@ -296,11 +292,10 @@ export function Navigation() {
                     <div key={item.href}>
                       <button
                         onClick={() => setExpandedMobileSection(isExpanded ? null : item.label)}
-                        className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold transition-colors ${
-                          isActive
+                        className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold transition-colors ${isActive
                             ? "text-[#0A0A0A] bg-[#F5F2EE]"
                             : "text-[#3A3A3A] hover:text-[#0A0A0A] hover:bg-[#F5F2EE]"
-                        }`}
+                          }`}
                       >
                         {item.label}
                         {item.subLinks && (
