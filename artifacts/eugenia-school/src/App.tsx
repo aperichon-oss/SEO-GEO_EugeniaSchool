@@ -1,4 +1,4 @@
-import { Switch, Route, Router as WouterRouter } from "wouter";
+import { Switch, Route, Router as WouterRouter, Redirect } from "wouter";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -24,6 +24,22 @@ import VieEtudianteHub from "@/pages/VieEtudianteHub";
 import PlaceholderPage from "@/pages/PlaceholderPage";
 import NotFound from "@/pages/not-found";
 
+// New pages
+import NotreADN from "@/pages/NotreADN";
+import ApprochePedagogique from "@/pages/ApprochePedagogique";
+import MethodeEugenia from "@/pages/MethodeEugenia";
+import Equipe from "@/pages/Equipe";
+import CampusParis from "@/pages/CampusParis";
+import CampusLyon from "@/pages/CampusLyon";
+import ProcessusAdmission from "@/pages/ProcessusAdmission";
+import Financement from "@/pages/Financement";
+import EtudiantsHub from "@/pages/EtudiantsHub";
+import Associations from "@/pages/Associations";
+import Temoignages from "@/pages/Temoignages";
+import PartenairesHub from "@/pages/PartenairesHub";
+import Presse from "@/pages/Presse";
+import Brochure from "@/pages/Brochure";
+
 const queryClient = new QueryClient();
 
 function Router() {
@@ -31,68 +47,113 @@ function Router() {
     <Switch>
       <Route path="/" component={Home} />
 
-      {/* Formations */}
+      {/* ==================== FORMATIONS ==================== */}
       <Route path="/formations" component={FormationsHub} />
-      <Route path="/programme/bachelor" component={Bachelor} />
-      <Route path="/programme/msc" component={MSc} />
       <Route path="/formations/bachelor" component={Bachelor} />
       <Route path="/formations/msc" component={MSc} />
       <Route path="/formations/alternance" component={PlaceholderPage} />
+      {/* Redirections anciennes URLs */}
+      <Route path="/programme/bachelor">
+        <Redirect to="/formations/bachelor" />
+      </Route>
+      <Route path="/programme/msc">
+        <Redirect to="/formations/msc" />
+      </Route>
 
-      {/* École */}
+      {/* ==================== ÉCOLE ==================== */}
       <Route path="/ecole" component={EcoleHub} />
-      <Route path="/ecole/methode" component={PlaceholderPage} />
-      <Route path="/ecole/equipe" component={PlaceholderPage} />
+      <Route path="/ecole/notre-adn" component={NotreADN} />
+      <Route path="/ecole/approche-pedagogique" component={ApprochePedagogique} />
+      <Route path="/ecole/methode-eugenia" component={MethodeEugenia} />
+      <Route path="/ecole/equipe" component={Equipe} />
       <Route path="/ecole/certifications" component={PlaceholderPage} />
-      <Route path="/ecole/partenaires" component={PlaceholderPage} />
-      <Route path="/notre-adn" component={PlaceholderPage} />
-      <Route path="/approche-pedagogique" component={PlaceholderPage} />
-      <Route path="/entreprises-partenaires" component={PlaceholderPage} />
-      <Route path="/methode-eugenia" component={PlaceholderPage} />
+      {/* Redirections anciennes URLs */}
+      <Route path="/notre-adn">
+        <Redirect to="/ecole/notre-adn" />
+      </Route>
+      <Route path="/approche-pedagogique">
+        <Redirect to="/ecole/approche-pedagogique" />
+      </Route>
+      <Route path="/methode-eugenia">
+        <Redirect to="/ecole/methode-eugenia" />
+      </Route>
+      <Route path="/ecole/methode">
+        <Redirect to="/ecole/methode-eugenia" />
+      </Route>
 
-      {/* Admissions */}
+      {/* ==================== PARTENAIRES ==================== */}
+      <Route path="/partenaires" component={PartenairesHub} />
+      <Route path="/partenaires/entreprises" component={PartenairesHub} />
+      <Route path="/partenaires/academiques" component={PlaceholderPage} />
+      {/* Redirections anciennes URLs */}
+      <Route path="/entreprises-partenaires">
+        <Redirect to="/partenaires" />
+      </Route>
+      <Route path="/ecole/partenaires">
+        <Redirect to="/partenaires" />
+      </Route>
+
+      {/* ==================== CAMPUS ==================== */}
+      <Route path="/campus" component={CampusHub} />
+      <Route path="/campus/paris" component={CampusParis} />
+      <Route path="/campus/lyon" component={CampusLyon} />
+
+      {/* ==================== ADMISSIONS ==================== */}
       <Route path="/admissions" component={AdmissionsHub} />
-      <Route path="/admissions/processus" component={AdmissionsHub} />
-      <Route path="/admissions/financement" component={PlaceholderPage} />
+      <Route path="/processus-admission" component={ProcessusAdmission} />
+      <Route path="/financement" component={Financement} />
       <Route path="/admissions/candidature" component={Candidature} />
       <Route path="/admissions/portes-ouvertes" component={PlaceholderPage} />
+      {/* Redirections anciennes URLs */}
+      <Route path="/admissions/processus">
+        <Redirect to="/processus-admission" />
+      </Route>
+      <Route path="/admissions/financement">
+        <Redirect to="/financement" />
+      </Route>
 
-      {/* Campus */}
-      <Route path="/campus" component={CampusHub} />
-      <Route path="/campus/paris" component={PlaceholderPage} />
-
-      {/* Vie étudiante */}
+      {/* ==================== ÉTUDIANTS ==================== */}
+      <Route path="/etudiants" component={EtudiantsHub} />
       <Route path="/vie-etudiante" component={VieEtudianteHub} />
-      <Route path="/vie-etudiante/geniathons" component={HackathonsHub} />
-      <Route path="/vie-etudiante/evenements" component={EvenementsHub} />
-      <Route path="/vie-etudiante/associations" component={PlaceholderPage} />
+      <Route path="/associations" component={Associations} />
+      <Route path="/temoignages" component={Temoignages} />
+      {/* Redirections anciennes URLs */}
+      <Route path="/vie-etudiante/associations">
+        <Redirect to="/associations" />
+      </Route>
 
-      {/* Hackathons */}
+      {/* ==================== HACKATHONS / GENIATHONS ==================== */}
       <Route path="/hackathons" component={HackathonsHub} />
       <Route path="/hackathons/:slug" component={HackathonDetail} />
+      <Route path="/vie-etudiante/geniathons" component={HackathonsHub} />
 
-      {/* Métiers */}
+      {/* ==================== MÉTIERS ==================== */}
       <Route path="/metiers" component={MetiersHub} />
       <Route path="/metiers/:slug" component={MetierDetail} />
 
-      {/* Événements */}
+      {/* ==================== ÉVÉNEMENTS ==================== */}
       <Route path="/evenements" component={EvenementsHub} />
       <Route path="/evenements/:slug" component={PlaceholderPage} />
+      <Route path="/vie-etudiante/evenements" component={EvenementsHub} />
 
-      {/* Blog */}
+      {/* ==================== BLOG ==================== */}
       <Route path="/blog" component={BlogHub} />
       <Route path="/blog/categorie/:cat" component={BlogHub} />
       <Route path="/blog/:slug" component={BlogPost} />
 
-      {/* Candidature & Brochure */}
+      {/* ==================== CANDIDATURE & BROCHURE ==================== */}
       <Route path="/candidature" component={Candidature} />
-      <Route path="/brochure" component={PlaceholderPage} />
+      <Route path="/brochure" component={Brochure} />
 
-      {/* Contact & Legal */}
+      {/* ==================== PRESSE ==================== */}
+      <Route path="/presse" component={Presse} />
+      <Route path="/presse/communiques" component={PlaceholderPage} />
+      <Route path="/presse/media-kit" component={PlaceholderPage} />
+
+      {/* ==================== CONTACT & LEGAL ==================== */}
       <Route path="/contact" component={Contact} />
       <Route path="/faq" component={FAQ} />
       <Route path="/mentions-legales" component={PlaceholderPage} />
-      <Route path="/presse" component={PlaceholderPage} />
 
       <Route component={NotFound} />
     </Switch>
@@ -100,7 +161,6 @@ function Router() {
 }
 
 function App() {
-  console.log("[v0] App rendering, BASE_URL:", import.meta.env.BASE_URL);
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
