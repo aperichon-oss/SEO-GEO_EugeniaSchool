@@ -130,7 +130,7 @@ export default function CampusParis() {
                 <div className="relative">
                   <div className="bg-gray-200 rounded-2xl overflow-hidden aspect-square">
                     <iframe
-                      src="https://www.google.com/maps/place/18+Rue+de+Paradis,+75010+Paris/@48.8748647,2.3488397,17z/data=!3m1!4b1!4m6!3m5!1s0x47e66e1317f46ef3:0x1880f11531ba7a37!8m2!3d48.8748613!4d2.3537106!16s%2Fg%2F11b8v5bs7m?entry=ttu&g_ep=EgoyMDI2MDQyNi4wIKXMDSoASAFQAw%3D%3D"
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.1265096490497!2d2.3511356757981936!3d48.87486479954785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1317f46ef3%3A0x1880f11531ba7a37!2s18%20Rue%20de%20Paradis%2C%2075010%20Paris!5e0!3m2!1sen!2sfr!4v1777412351570!5m2!1sen!2sfr"
                       width="100%"
                       height="100%"
                       style={{ border: 0, minHeight: "400px" }}
