@@ -19,7 +19,7 @@ export const blogCategories = [
 export interface BlogArticle {
   slug: string;
   title: string;
-  category: string;
+  category: string[];
   categoryLabel: string;
   excerpt: string;
   content?: string;
@@ -185,10 +185,10 @@ function convertStaticPosts(): BlogArticle[] {
   return staticBlogPosts.map(post => ({
     slug: post.slug,
     title: post.title,
-    category: post.category,
+    category: post.category, // maintenant string[]
     categoryLabel: post.categoryLabel,
     excerpt: post.excerpt,
-    content: "", // Static posts don't have full content
+    content: "",
     author: post.author,
     date: post.date,
     image: post.image || "https://cdn.prod.website-files.com/67ab8ba4ea1a5d633ea28cf6/684be468cd31c303843065c1_Data%20engi%2Canalyst%2Cscientis.png",
