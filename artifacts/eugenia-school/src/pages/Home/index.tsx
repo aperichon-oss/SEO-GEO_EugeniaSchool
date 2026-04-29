@@ -5,7 +5,6 @@ import { SeoHead } from "@/components/SeoHead";
 import { AnnouncementBar } from "@/components/AnnouncementBar";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import { SocialMediaSection } from "@/components/SocialMediaSection";
 import { BlogSection } from "@/components/BlogSection";
 import { hackathons, metiers } from "@/lib/data";
 
@@ -558,9 +557,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-
-        {/* SOCIAL MEDIA */}
-        <SocialMediaSection />
 
         {/* BLOG - Dynamic from Google Sheets */}
         <BlogSection 

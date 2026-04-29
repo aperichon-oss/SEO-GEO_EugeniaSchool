@@ -6,9 +6,9 @@ const SHEET_ID = "1r-CJP3PEefS9YBZbk9d4lbGoSPcRdTGPAS09c_CiN_Y";
 // Categories for blog articles
 export const blogCategories = [
   { label: "Tous", slug: "" },
-  { label: "Actualités", slug: "actualites" },
+  { label: "Actualites", slug: "actualites" },
   { label: "Business Deep Dives", slug: "business-deep-dives" },
-  { label: "Pédagogie", slug: "pedagogie" },
+  { label: "Pedagogie", slug: "pedagogie" },
   { label: "Bachelor", slug: "bachelor" },
   { label: "Entrepreneuriat", slug: "entrepreneuriat" },
   { label: "Master", slug: "master" },
@@ -32,35 +32,46 @@ function getSheetCsvUrl(sheetId: string, gid: string = "0"): string {
   return `https://docs.google.com/spreadsheets/d/${sheetId}/export?format=csv&gid=${gid}`;
 }
 
-// Parse CSV data
+// Parse CSV data with proper handling of quoted fields and newlines
 function parseCsv(csv: string): string[][] {
-  const lines = csv.split("\n");
   const result: string[][] = [];
+  let current = "";
+  let inQuotes = false;
+  let row: string[] = [];
   
-  for (const line of lines) {
-    const row: string[] = [];
-    let current = "";
-    let inQuotes = false;
+  for (let i = 0; i < csv.length; i++) {
+    const char = csv[i];
+    const nextChar = csv[i + 1];
     
-    for (let i = 0; i < line.length; i++) {
-      const char = line[i];
-      
-      if (char === '"') {
-        if (inQuotes && line[i + 1] === '"') {
-          current += '"';
-          i++;
-        } else {
-          inQuotes = !inQuotes;
-        }
-      } else if (char === "," && !inQuotes) {
-        row.push(current.trim());
-        current = "";
+    if (char === '"') {
+      if (inQuotes && nextChar === '"') {
+        current += '"';
+        i++;
       } else {
-        current += char;
+        inQuotes = !inQuotes;
       }
+    } else if (char === "," && !inQuotes) {
+      row.push(current.trim());
+      current = "";
+    } else if ((char === "\n" || (char === "\r" && nextChar === "\n")) && !inQuotes) {
+      row.push(current.trim());
+      if (row.some(cell => cell !== "")) {
+        result.push(row);
+      }
+      row = [];
+      current = "";
+      if (char === "\r") i++;
+    } else if (char !== "\r") {
+      current += char;
     }
+  }
+  
+  // Don't forget the last row
+  if (current || row.length > 0) {
     row.push(current.trim());
-    result.push(row);
+    if (row.some(cell => cell !== "")) {
+      result.push(row);
+    }
   }
   
   return result;
@@ -72,6 +83,27 @@ function getCategoryLabel(slug: string): string {
   return category?.label || slug;
 }
 
+// Normalize category string to slug
+function normalizeCategory(cat: string): string {
+  if (!cat) return "actualites";
+  
+  const normalized = cat
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .trim();
+  
+  // Map common variations
+  if (normalized.includes("actualite")) return "actualites";
+  if (normalized.includes("business") || normalized.includes("deep dive")) return "business-deep-dives";
+  if (normalized.includes("pedagog")) return "pedagogie";
+  if (normalized.includes("bachelor")) return "bachelor";
+  if (normalized.includes("entrepreneur")) return "entrepreneuriat";
+  if (normalized.includes("master") || normalized.includes("msc")) return "master";
+  
+  return normalized.replace(/\s+/g, "-");
+}
+
 // Generate slug from title
 function generateSlug(title: string): string {
   return title
@@ -80,6 +112,17 @@ function generateSlug(title: string): string {
     .replace(/[\u0300-\u036f]/g, "")
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
+}
+
+// Find column index by name (case-insensitive, partial match)
+function findColumnIndex(headers: string[], ...possibleNames: string[]): number {
+  for (const name of possibleNames) {
+    const index = headers.findIndex(h => 
+      h.toLowerCase().includes(name.toLowerCase())
+    );
+    if (index !== -1) return index;
+  }
+  return -1;
 }
 
 // Fetch articles from Google Sheets
@@ -98,35 +141,61 @@ export async function fetchArticlesFromSheet(): Promise<BlogArticle[]> {
     const csv = await response.text();
     const rows = parseCsv(csv);
     
-    // Skip header row
+    // Need at least header + 1 data row
     if (rows.length <= 1) return [];
+    
+    const headers = rows[0].map(h => h.toLowerCase().trim());
+    
+    // Find column indices based on expected column names
+    // Expected: Titles, meta description, contenu, categorie (optional), author (optional), date (optional), image (optional)
+    const titleIdx = findColumnIndex(headers, "titles", "title", "titre");
+    const metaDescIdx = findColumnIndex(headers, "meta description", "description", "excerpt");
+    const contentIdx = findColumnIndex(headers, "contenu", "content", "article");
+    const categoryIdx = findColumnIndex(headers, "categorie", "category", "cat");
+    const authorIdx = findColumnIndex(headers, "author", "auteur");
+    const dateIdx = findColumnIndex(headers, "date", "publication");
+    const imageIdx = findColumnIndex(headers, "image", "img", "photo");
+    
+    if (titleIdx === -1) {
+      console.error("[v0] Could not find 'Titles' column in Google Sheet");
+      return [];
+    }
     
     const articles: BlogArticle[] = [];
     
-    // Expected columns: Title, Category, Excerpt, Author, Date, Image URL, Content (optional)
     for (let i = 1; i < rows.length; i++) {
       const row = rows[i];
-      if (!row[0] || row[0].trim() === "") continue; // Skip empty rows
+      const title = row[titleIdx]?.trim() || "";
       
-      const title = row[0]?.trim() || "";
-      const category = row[1]?.trim().toLowerCase().replace(/\s+/g, "-") || "actualites";
-      const excerpt = row[2]?.trim() || "";
-      const author = row[3]?.trim() || "Eugenia School";
-      const date = row[4]?.trim() || new Date().toISOString().split("T")[0];
-      const image = row[5]?.trim() || "https://cdn.prod.website-files.com/67ab8ba4ea1a5d633ea28cf6/684be468cd31c303843065c1_Data%20engi%2Canalyst%2Cscientis.png";
-      const content = row[6]?.trim() || "";
+      if (!title) continue; // Skip empty rows
+      
+      const metaDescription = metaDescIdx !== -1 ? row[metaDescIdx]?.trim() || "" : "";
+      const content = contentIdx !== -1 ? row[contentIdx]?.trim() || "" : "";
+      const categoryRaw = categoryIdx !== -1 ? row[categoryIdx]?.trim() || "" : "";
+      const author = authorIdx !== -1 ? row[authorIdx]?.trim() || "Eugenia School" : "Eugenia School";
+      const date = dateIdx !== -1 ? row[dateIdx]?.trim() || new Date().toISOString().split("T")[0] : new Date().toISOString().split("T")[0];
+      const image = imageIdx !== -1 && row[imageIdx]?.trim() 
+        ? row[imageIdx].trim() 
+        : "https://cdn.prod.website-files.com/67ab8ba4ea1a5d633ea28cf6/684be468cd31c303843065c1_Data%20engi%2Canalyst%2Cscientis.png";
+      
+      // Determine category
+      const category = normalizeCategory(categoryRaw);
+      
+      // Calculate read time based on content length (average 200 words per minute)
+      const wordCount = content.split(/\s+/).length;
+      const readTime = Math.max(3, Math.ceil(wordCount / 200));
       
       articles.push({
         slug: generateSlug(title),
         title,
         category,
         categoryLabel: getCategoryLabel(category),
-        excerpt,
+        excerpt: metaDescription,
         content,
         author,
         date,
         image,
-        readTime: Math.ceil((content.length || excerpt.length) / 1000) + 3,
+        readTime,
       });
     }
     
