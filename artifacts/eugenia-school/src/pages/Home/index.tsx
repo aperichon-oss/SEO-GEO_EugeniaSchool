@@ -5,6 +5,8 @@ import { SeoHead } from "@/components/SeoHead";
 import { AnnouncementBar } from "@/components/AnnouncementBar";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
+import { SocialMediaSection } from "@/components/SocialMediaSection";
+import { BlogSection } from "@/components/BlogSection";
 import { hackathons, metiers } from "@/lib/data";
 
 const CDN = "https://cdn.prod.website-files.com/67ab1d492136bb5f36b3ec6b";
@@ -557,26 +559,15 @@ export default function Home() {
           </div>
         </section>
 
-        {/* BLOG */}
-        <section className="py-20 bg-gray-50">
-          <div className="container mx-auto px-4">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeIn}
-              className="text-center mb-16"
-            >
-              <Link
-                href="/blog"
-                className="inline-flex items-center gap-2 text-[#8B2346] hover:text-[#6B1A35] font-semibold text-lg"
-              >
-                Le blog
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </motion.div>
-          </div>
-        </section>
+        {/* SOCIAL MEDIA */}
+        <SocialMediaSection />
+
+        {/* BLOG - Dynamic from Google Sheets */}
+        <BlogSection 
+          limit={3}
+          title="Dernieres actualites"
+          subtitle="Restez informes des dernieres nouvelles d'Eugenia School, de nos hackathons et de l'actualite IA & Business."
+        />
 
         {/* CTA */}
         <section className="py-20 bg-[#8B2346] text-white">
