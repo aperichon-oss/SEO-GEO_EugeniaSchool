@@ -299,7 +299,7 @@ export const blogPosts = [
   {
     slug: "retour-sur-le-hackathon-des-3m",
     title: "Retour sur le Hackathon des 3M",
-    category: "pedagogie, business-deep-dives",
+    category: ["pedagogie", "business-deep-dives"],
     categoryLabel: "Pedagogie, Business Deep Dives",
     author: "Noe M.",
     date: "2025-04-23",
@@ -310,8 +310,8 @@ export const blogPosts = [
   {
     slug: "master-of-science-ai-applied-to-business-une-formation-pensee-pour-laction",
     title: "Master of Science AI Applied to Business : une formation pensee pour l'action",
-    category: "stages-alternances",
-    categoryLabel: "Stages et Alternances",
+    category: "master",
+    categoryLabel: "Master",
     author: "Malou P.",
     date: "2025-04-17",
     readTime: 6,
@@ -321,8 +321,8 @@ export const blogPosts = [
   {
     slug: "excel-vs-power-bi-vs-tableau-quel-outil-de-data-visualisation-choisir",
     title: "Excel vs Power BI vs Tableau : quel outil de data visualisation choisir ?",
-    category: "stages-alternances",
-    categoryLabel: "Stages et Alternances",
+    category: "petagogie",
+    categoryLabel: "Pedagogie",
     author: "Malou P.",
     date: "2025-04-15",
     readTime: 7,
@@ -374,17 +374,6 @@ export const blogPosts = [
     image: "https://cdn.prod.website-files.com/67ab8ba4ea1a5d633ea28cf6/67ed5805153bfdd509f2ab55_gofusion2.jpg"
   },
   {
-    slug: "que-faire-apres-un-bac-stmg",
-    title: "Que faire apres un bac STMG ?",
-    category: "stmg",
-    categoryLabel: "STMG",
-    author: "Noe M.",
-    date: "2025-03-26",
-    readTime: 6,
-    excerpt: "Toutes les options d'orientation apres un bac STMG : ecoles, formations et debouches.",
-    image: "https://cdn.prod.website-files.com/67ab8ba4ea1a5d633ea28cf6/67e416848d3cc1888589a265_3regards%20%C3%A9tudiants.jpeg"
-  },
-  {
     slug: "importance-esprit-critique-decrypter-enjeux-monde",
     title: "L'importance de l'esprit critique pour decrypter les enjeux du monde qui nous entoure",
     category: "pedagogie",
@@ -398,8 +387,8 @@ export const blogPosts = [
   {
     slug: "maintenir-attentin-etudiants-enseignement-superieur",
     title: "Maintenir l'attention des etudiants dans l'enseignement superieur : Un defi psychologique et cognitif",
-    category: "bien-etre",
-    categoryLabel: "Bien-etre",
+    category: "pedagogie",
+    categoryLabel: "Pedagogie",
     author: "Marie de Rosen",
     date: "2025-01-15",
     readTime: 8,
