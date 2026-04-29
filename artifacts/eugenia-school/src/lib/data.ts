@@ -300,7 +300,7 @@ export const blogPosts = [
     slug: "retour-sur-le-hackathon-des-3m",
     title: "Retour sur le Hackathon des 3M",
     category: "pedagogie",
-    categoryLabel: "Pedagogie",
+    categoryLabel: "Pedagogie, Business Deep Dives",
     author: "Noe M.",
     date: "2025-04-23",
     readTime: 4,
