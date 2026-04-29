@@ -377,9 +377,9 @@ export default function Home() {
                 variants={fadeIn}
                 className="bg-gradient-to-br from-[#FEF5E0] to-[#FDECC8] p-8 rounded-xl"
               >
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">MSc Géniathon</h3>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">MSc Hackathon</h3>
                 <p className="text-gray-700 mb-6">
-                  Les Géniathons des Master of Science permettent aux étudiants de travailler en mode hackathon
+                  Les Hackathon des Master of Science permettent aux étudiants de travailler en mode hackathon
                   pendant 1 à 3 jours sur des cas data et business, proposés par nos entreprises partenaires.
                   Une immersion intensive pour mettre à profit leurs compétences acquises en alternance et en développer de nouvelles.
                 </p>
@@ -563,7 +563,7 @@ export default function Home() {
         <SocialMediaSection />
 
         {/* BLOG - Dynamic from Google Sheets */}
-        <BlogSection 
+        <BlogSection
           limit={3}
           title="Dernieres actualites"
           subtitle="Restez informes des dernieres nouvelles d'Eugenia School, de nos hackathons et de l'actualite IA & Business."
