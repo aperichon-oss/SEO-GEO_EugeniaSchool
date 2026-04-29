@@ -7,94 +7,20 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { fetchArticlesFromSheet, blogCategories, BlogArticle } from "@/lib/googleSheets";
+import { blogPosts } from "@/lib/data";
 
-// Fallback articles if Google Sheets is not accessible
-const fallbackArticles: BlogArticle[] = [
-  {
-    slug: "data-engineer-analyst-scientist",
-    category: "actualites",
-    categoryLabel: "Actualites",
-    title: "Data Engineer, Data Analyst, Data Scientist : quelles differences ?",
-    excerpt:
-      "Trois metiers, trois profils. Tour d'horizon des competences, des salaires et des debouches pour chacun de ces roles cles dans les entreprises qui se transforment grace a la data.",
-    author: "Eugenia School",
-    date: "2026-03-15",
-    image: "https://cdn.prod.website-files.com/67ab8ba4ea1a5d633ea28cf6/684be468cd31c303843065c1_Data%20engi%2Canalyst%2Cscientis.png",
-    readTime: 6,
-  },
-  {
-    slug: "carrefour-links-hackathon",
-    category: "business-deep-dives",
-    categoryLabel: "Business Deep Dives",
-    title: "Retour sur le Business Deep Dive Carrefour Links",
-    excerpt:
-      "Nos etudiants Bachelor ont travaille sur des donnees achats reelles de Carrefour Links pour concevoir des KPIs et automatiser des reportings. Recit de 3 semaines intensives.",
-    author: "Eugenia School",
-    date: "2026-02-20",
-    image: "https://cdn.prod.website-files.com/67ab8ba4ea1a5d633ea28cf6/683f0f281eaed1b019de2da2_carrefourlinks.png",
-    readTime: 5,
-  },
-  {
-    slug: "welcome-to-the-jungle-hackathon",
-    category: "business-deep-dives",
-    categoryLabel: "Business Deep Dives",
-    title: "Hackathon Welcome to the Jungle : l'IA au service de l'experience collaborateur",
-    excerpt:
-      "Comment reinventer la vie au bureau grace a l'IA ? Nos equipes ont releve le defi lors d'un hackathon d'une journee organise par WTTJ.",
-    author: "Eugenia School",
-    date: "2026-02-10",
-    image: "https://cdn.prod.website-files.com/67ab8ba4ea1a5d633ea28cf6/68494eb4e1d0325098170560_wttj%20article.png",
-    readTime: 4,
-  },
-  {
-    slug: "methode-pedagogique-eugenia",
-    category: "pedagogie",
-    categoryLabel: "Pedagogie",
-    title: "Notre methode pedagogique : apprendre en faisant",
-    excerpt:
-      "Decouvrez comment Eugenia School revolutionne l'apprentissage avec une approche 100% projet et immersion entreprise des le premier jour.",
-    author: "Eugenia School",
-    date: "2026-01-25",
-    image: "https://cdn.prod.website-files.com/67ab1d492136bb5f36b3ec6b/67ceef2e9b9745a770b55d80_Jonasrond.avif",
-    readTime: 5,
-  },
-  {
-    slug: "parcoursup-alternatives",
-    category: "bachelor",
-    categoryLabel: "Bachelor",
-    title: "Parcoursup n'est pas une fin en soi : explorez d'autres voies",
-    excerpt:
-      "Ne pas etre accepte sur Parcoursup n'est pas un echec. Eugenia School, hors Parcoursup, accueille les profils atypiques et ambitieux.",
-    author: "Eugenia School",
-    date: "2026-01-15",
-    image: "https://cdn.prod.website-files.com/67ab8ba4ea1a5d633ea28cf6/6855251e1a14fcebb8a8aa2d_parcoursup%20n%27est%20pas%20une%20fin%20en%20soi%20%20explorez%20d%27autres%20voies%20vers%20la%20r%C3%A9ussite%20_page-0001.jpg",
-    readTime: 6,
-  },
-  {
-    slug: "creer-startup-ia-etudiant",
-    category: "entrepreneuriat",
-    categoryLabel: "Entrepreneuriat",
-    title: "Creer sa startup IA en etant etudiant : le guide complet",
-    excerpt:
-      "De l'idee au MVP, decouvrez les etapes cles pour lancer votre projet entrepreneurial pendant vos etudes a Eugenia School.",
-    author: "Eugenia School",
-    date: "2026-01-10",
-    image: "https://cdn.prod.website-files.com/67ab8ba4ea1a5d633ea28cf6/681226ec395ef72acd5acbcc_top%205%20d%C3%A9bouch%C3%A9s.png",
-    readTime: 8,
-  },
-  {
-    slug: "msc-ia-business-debouches",
-    category: "master",
-    categoryLabel: "Master",
-    title: "MSc IA & Business : les debouches apres le diplome",
-    excerpt:
-      "Data Analyst, Consultant IA, Growth Hacker... Decouvrez les carrieres qui s'ouvrent apres notre Master of Science en alternance.",
-    author: "Eugenia School",
-    date: "2025-12-20",
-    image: "https://cdn.prod.website-files.com/67ab8ba4ea1a5d633ea28cf6/683035c06b85d54663a65ee0_salesops.png",
-    readTime: 5,
-  },
-];
+// Convert static blogPosts to BlogArticle format
+const staticArticles: BlogArticle[] = blogPosts.map(post => ({
+  slug: post.slug,
+  category: post.category,
+  categoryLabel: post.categoryLabel,
+  title: post.title,
+  excerpt: post.excerpt,
+  author: post.author,
+  date: post.date,
+  image: post.image || "https://cdn.prod.website-files.com/67ab1d492136bb5f36b3ec6b/67ceef2e9b9745a770b55d80_Jonasrond.avif",
+  readTime: post.readTime,
+}));
 
 export default function BlogHub() {
   const params = useParams<{ cat?: string }>();
@@ -107,7 +33,13 @@ export default function BlogHub() {
     refetchOnWindowFocus: true,
   });
 
-  const displayArticles = articles && articles.length > 0 ? articles : fallbackArticles;
+  // Combine Google Sheets articles with static articles, avoiding duplicates
+  const sheetArticles = articles || [];
+  const allSlugs = new Set(sheetArticles.map(a => a.slug));
+  const uniqueStaticArticles = staticArticles.filter(a => !allSlugs.has(a.slug));
+  const displayArticles = [...sheetArticles, ...uniqueStaticArticles].sort((a, b) => 
+    new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
   const filtered = activeCat ? displayArticles.filter((a) => a.category === activeCat) : displayArticles;
 
   const activeCategoryLabel = blogCategories.find((c) => c.slug === activeCat)?.label || "Tous";

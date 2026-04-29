@@ -8,64 +8,24 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { fetchArticlesFromSheet, BlogArticle } from "@/lib/googleSheets";
+import { blogPosts } from "@/lib/data";
 
-// Fallback static articles
-const staticArticles: Record<string, BlogArticle> = {
-  "data-engineer-analyst-scientist": {
-    slug: "data-engineer-analyst-scientist",
-    title: "Data Engineer, Data Analyst, Data Scientist : quelles differences ?",
-    category: "actualites",
-    categoryLabel: "IA et Data",
-    excerpt: "Trois metiers, trois profils tres differents - pourtant souvent confondus.",
-    author: "Eugenia School",
-    date: "2025-05-15",
-    image: "https://cdn.prod.website-files.com/67ab8ba4ea1a5d633ea28cf6/684be468cd31c303843065c1_Data%20engi%2Canalyst%2Cscientis.png",
-    readTime: 5,
-    content: `Trois metiers, trois profils tres differents — pourtant souvent confondus. 
-
-## Le Data Engineer
-
-Le **Data Engineer** construit et maintient les pipelines de donnees (ETL, entrepots de donnees, infrastructures cloud). Il est le garant de la qualite et de la disponibilite des donnees.
-
-## Le Data Analyst
-
-Le **Data Analyst** exploite ces donnees pour produire des insights business : tableaux de bord, rapports, KPIs. Il traduit la donnee en informations actionnables pour les decideurs.
-
-## Le Data Scientist
-
-Le **Data Scientist** va plus loin en modelisant des phenomenes complexes a l'aide du machine learning et des algorithmes predictifs. Il cree de la valeur en predisant des comportements futurs.
-
----
-
-Chez Eugenia School, nos programmes Bachelor et MSc forment aux trois profils, avec une specialisation possible selon votre projet professionnel. Les Geniathons — projets intensifs avec nos entreprises partenaires (Carrefour, Doctolib, Spendesk…) — permettent de toucher a ces trois realites metier en conditions reelles.`,
-  },
-  "parcoursup-pas-une-fin": {
-    slug: "parcoursup-pas-une-fin",
-    title: "Parcoursup n'est pas une fin en soi : explorez d'autres voies",
-    category: "bachelor",
-    categoryLabel: "Orientation",
-    excerpt: "Chaque annee, des milliers de lyceens se retrouvent sans affectation sur Parcoursup. C'est en realite une opportunite.",
-    author: "Eugenia School",
-    date: "2025-03-20",
-    image: "https://cdn.prod.website-files.com/67ab8ba4ea1a5d633ea28cf6/6855251e1a14fcebb8a8aa2d_parcoursup%20n%27est%20pas%20une%20fin%20en%20soi%20%20explorez%20d%27autres%20voies%20vers%20la%20r%C3%A9ussite%20_page-0001.jpg",
-    readTime: 4,
-    content: `Chaque annee, des milliers de lyceens se retrouvent sans affectation sur Parcoursup — ou avec une affectation qui ne leur correspond pas. C'est souvent vecu comme un echec, alors que c'est en realite une opportunite de choisir une voie plus adaptee a ses ambitions.
-
-## Eugenia School est hors Parcoursup
-
-Cela signifie que les candidatures sont possibles tout au long de l'annee, sans dependre d'un algorithme ou d'un classement. Le processus d'admission est base sur la motivation, la curiosite et le potentiel — pas uniquement sur les notes du bac.
-
-## Des profils varies
-
-Notre Bachelor AI Applied to Business accueille des profils varies :
-- Bacheliers generaux
-- Bacheliers technologiques (STMG, STI2D)
-- Personnes en reconversion
-- Passionnes de tech, de business ou des deux
-
-Ce qui compte, c'est votre ambition de construire une carriere a impact.`,
-  },
-};
+// Convert static blogPosts to a lookup map
+const staticArticlesMap: Record<string, BlogArticle> = {};
+blogPosts.forEach(post => {
+  staticArticlesMap[post.slug] = {
+    slug: post.slug,
+    category: post.category,
+    categoryLabel: post.categoryLabel,
+    title: post.title,
+    excerpt: post.excerpt,
+    author: post.author,
+    date: post.date,
+    image: post.image || "https://cdn.prod.website-files.com/67ab1d492136bb5f36b3ec6b/67ceef2e9b9745a770b55d80_Jonasrond.avif",
+    readTime: post.readTime,
+    content: post.excerpt, // Use excerpt as content for static articles
+  };
+});
 
 export default function BlogPost() {
   const params = useParams<{ slug: string }>();
@@ -80,7 +40,7 @@ export default function BlogPost() {
 
   // Find article from Google Sheets or fallback to static
   const dynamicArticle = articles?.find((a) => a.slug === slug);
-  const article = dynamicArticle || staticArticles[slug];
+  const article = dynamicArticle || staticArticlesMap[slug];
 
   if (isLoading) {
     return (

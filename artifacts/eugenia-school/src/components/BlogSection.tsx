@@ -3,6 +3,7 @@ import { Link } from "wouter";
 import { ArrowRight, Tag, Clock, User } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { fetchArticlesFromSheet, blogCategories, BlogArticle } from "@/lib/googleSheets";
+import { blogPosts } from "@/lib/data";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -14,42 +15,18 @@ const stagger = {
   visible: { opacity: 1, transition: { staggerChildren: 0.15 } },
 };
 
-// Fallback articles if Google Sheets is not accessible
-const fallbackArticles: BlogArticle[] = [
-  {
-    slug: "ia-generative-entreprises-usages-2026",
-    title: "IA generative en entreprise : 7 usages concrets en 2026",
-    category: "actualites",
-    categoryLabel: "Actualites",
-    excerpt: "De la generation de contenu a l'automatisation des process, decouvrez comment les entreprises utilisent reellement l'IA generative.",
-    author: "Eugenia School",
-    date: "2026-02-05",
-    image: "https://cdn.prod.website-files.com/67ab8ba4ea1a5d633ea28cf6/684be468cd31c303843065c1_Data%20engi%2Canalyst%2Cscientis.png",
-    readTime: 6,
-  },
-  {
-    slug: "business-deep-dive-carrefour-links",
-    title: "Retour sur le Business Deep Dive Carrefour Links",
-    category: "business-deep-dives",
-    categoryLabel: "Business Deep Dives",
-    excerpt: "Nos etudiants Bachelor ont travaille sur des donnees achats reelles de Carrefour Links pour concevoir des KPIs et automatiser des reportings.",
-    author: "Eugenia School",
-    date: "2026-01-20",
-    image: "https://cdn.prod.website-files.com/67ab8ba4ea1a5d633ea28cf6/683f0f281eaed1b019de2da2_carrefourlinks.png",
-    readTime: 5,
-  },
-  {
-    slug: "methode-pedagogique-eugenia-school",
-    title: "Notre methode pedagogique : apprendre en faisant",
-    category: "pedagogie",
-    categoryLabel: "Pedagogie",
-    excerpt: "Decouvrez comment Eugenia School revolutionne l'apprentissage avec une approche 100% projet et immersion entreprise.",
-    author: "Eugenia School",
-    date: "2026-01-15",
-    image: "https://cdn.prod.website-files.com/67ab1d492136bb5f36b3ec6b/67ceef2e9b9745a770b55d80_Jonasrond.avif",
-    readTime: 4,
-  },
-];
+// Convert static blogPosts to BlogArticle format
+const staticArticles: BlogArticle[] = blogPosts.map(post => ({
+  slug: post.slug,
+  category: post.category,
+  categoryLabel: post.categoryLabel,
+  title: post.title,
+  excerpt: post.excerpt,
+  author: post.author,
+  date: post.date,
+  image: post.image || "https://cdn.prod.website-files.com/67ab1d492136bb5f36b3ec6b/67ceef2e9b9745a770b55d80_Jonasrond.avif",
+  readTime: post.readTime,
+}));
 
 interface BlogSectionProps {
   limit?: number;
@@ -71,7 +48,13 @@ export function BlogSection({
     refetchOnWindowFocus: true,
   });
 
-  const displayArticles = (articles && articles.length > 0 ? articles : fallbackArticles).slice(0, limit);
+  // Combine Google Sheets articles with static articles, avoiding duplicates
+  const sheetArticles = articles || [];
+  const allSlugs = new Set(sheetArticles.map(a => a.slug));
+  const uniqueStaticArticles = staticArticles.filter(a => !allSlugs.has(a.slug));
+  const displayArticles = [...sheetArticles, ...uniqueStaticArticles]
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .slice(0, limit);
 
   return (
     <section className="py-20 bg-gray-50">

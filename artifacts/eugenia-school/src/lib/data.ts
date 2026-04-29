@@ -284,55 +284,138 @@ export const metiers = [
 ];
 
 export const blogPosts = [
+  // Articles du site eugeniaschool.com
   {
-    slug: "gemini-chatgpt-claude-quelle-ia-choisir-pour-ses-etudes",
-    title: "Gemini, ChatGPT, Claude... Quelle IA choisir pour ses etudes ?",
-    category: "ia-et-data",
-    categoryLabel: "IA et Data",
-    author: "Noe M.",
-    date: "2026-01-27",
+    slug: "parcoursup-que-faire-maintenant-que-les-voeux-sont-clos",
+    title: "Parcoursup : que faire maintenant que les voeux sont clos ?",
+    category: "bachelor",
+    categoryLabel: "Bachelor",
+    author: "Marie de Rosen",
+    date: "2025-04-28",
     readTime: 5,
-    excerpt: "On compare ChatGPT, Claude et Gemini pour t'aider a choisir le bon outil selon ton profil : redaction, analyse, recherche."
+    excerpt: "Les voeux Parcoursup sont clos. Decouvrez les prochaines etapes et comment maximiser vos chances d'admission.",
+    image: "https://cdn.prod.website-files.com/67ab8ba4ea1a5d633ea28cf6/680f9fe4b0c7d1ae97d42976_Que%20faire%20apr%C3%A8s%20psp.png"
   },
   {
-    slug: "focus-sur-le-metier-de-sales-ops-en-startup",
-    title: "Focus sur le metier de Sales Ops en startup",
-    category: "business-carrieres",
-    categoryLabel: "Business et Carrieres",
+    slug: "retour-sur-le-hackathon-des-3m",
+    title: "Retour sur le Hackathon des 3M",
+    category: "pedagogie",
+    categoryLabel: "Pedagogie",
     author: "Noe M.",
-    date: "2025-05-23",
-    readTime: 5,
-    excerpt: "Le Sales Ops est devenu central dans les startups tech. Missions, outils CRM, salaires et formations : tout ce qu'il faut savoir."
-  },
-  {
-    slug: "orientation-post-bac-hors-parcoursup-alternatives",
-    title: "Orientation post-bac : les meilleures alternatives hors Parcoursup",
-    category: "orientation",
-    categoryLabel: "Orientation",
-    author: "Noe M.",
-    date: "2025-11-15",
-    readTime: 7,
-    excerpt: "Parcoursup ce n'est pas la seule voie. Decouvrez les ecoles post-bac hors Parcoursup qui recrutent sur dossier et entretien."
-  },
-  {
-    slug: "hackathon-doctolib-retour-experience",
-    title: "Retour sur le Geniathon Doctolib — 72h de data medicale",
-    category: "vie-eugenia",
-    categoryLabel: "Vie Eugenia",
-    author: "Noe M.",
-    date: "2025-03-10",
+    date: "2025-04-23",
     readTime: 4,
-    excerpt: "Nos etudiants MSc ont planche sur les bases de donnees medicales de Doctolib pendant 3 jours. Retour d'experience."
+    excerpt: "Nos etudiants ont releve le defi du hackathon 3M. Retour sur cette experience immersive.",
+    image: "https://cdn.prod.website-files.com/67ab8ba4ea1a5d633ea28cf6/6808fd55f55b2787ccd6b574_3M%20blog.png"
   },
   {
-    slug: "ia-generative-entreprises-usages-concrets",
-    title: "IA generative en entreprise : 7 usages concrets en 2026",
-    category: "ia-et-data",
-    categoryLabel: "IA et Data",
-    author: "Noe M.",
-    date: "2026-02-05",
+    slug: "master-of-science-ai-applied-to-business-une-formation-pensee-pour-laction",
+    title: "Master of Science AI Applied to Business : une formation pensee pour l'action",
+    category: "master",
+    categoryLabel: "Master",
+    author: "Malou P.",
+    date: "2025-04-17",
     readTime: 6,
-    excerpt: "De la generation de contenu a l'automatisation des process, decouvrez comment les entreprises utilisent reellement l'IA generative."
+    excerpt: "Decouvrez notre MSc AI Applied to Business, une formation qui allie theorie et pratique en entreprise.",
+    image: "https://cdn.prod.website-files.com/67ab8ba4ea1a5d633ea28cf6/68011c585ab79339bb3d9617_AA615370-96FE-402C-A2DC-F3B8728E6A05_1_105_c.jpeg"
+  },
+  {
+    slug: "excel-vs-power-bi-vs-tableau-quel-outil-de-data-visualisation-choisir",
+    title: "Excel vs Power BI vs Tableau : quel outil de data visualisation choisir ?",
+    category: "business-deep-dives",
+    categoryLabel: "Business Deep Dives",
+    author: "Malou P.",
+    date: "2025-04-15",
+    readTime: 7,
+    excerpt: "Comparatif complet des outils de data visualisation pour vous aider a faire le bon choix.",
+    image: "https://cdn.prod.website-files.com/67ab8ba4ea1a5d633ea28cf6/67fe4721f4cfcf59ced897c9_Excel%20vs.%20Power%20BI.jpeg"
+  },
+  {
+    slug: "les-erreurs-classiques-des-jeunes-entrepreneurs-et-comment-les-eviter",
+    title: "Les erreurs classiques des jeunes entrepreneurs et comment les eviter ?",
+    category: "entrepreneuriat",
+    categoryLabel: "Entrepreneuriat",
+    author: "Eugenia School",
+    date: "2025-04-11",
+    readTime: 6,
+    excerpt: "Les pieges a eviter quand on se lance dans l'entrepreneuriat. Conseils pratiques pour reussir.",
+    image: "https://cdn.prod.website-files.com/67ab8ba4ea1a5d633ea28cf6/67f8eb6fe0a391e6abf7ecd4_CC78F206-90F8-419C-B1AC-F23772DBD84A_1_105_c.jpeg"
+  },
+  {
+    slug: "7-idees-de-business-a-lancer-pendant-ses-etudes",
+    title: "7 idees de business a lancer pendant ses etudes",
+    category: "entrepreneuriat",
+    categoryLabel: "Entrepreneuriat",
+    author: "Eugenia School",
+    date: "2025-04-09",
+    readTime: 5,
+    excerpt: "Envie d'entreprendre pendant vos etudes ? Voici 7 idees de business accessibles et rentables.",
+    image: "https://cdn.prod.website-files.com/67ab8ba4ea1a5d633ea28cf6/67f6443e94906c49f9a9adbf_miniature%20blog.png"
+  },
+  {
+    slug: "le-ghibli-style-et-lia",
+    title: "Le \"Ghibli Style\" et l'IA",
+    category: "actualites",
+    categoryLabel: "Actualites",
+    author: "Noe M.",
+    date: "2025-04-04",
+    readTime: 4,
+    excerpt: "Comment l'IA reproduit le style artistique du Studio Ghibli et ce que cela signifie pour la creation.",
+    image: "https://cdn.prod.website-files.com/67ab8ba4ea1a5d633ea28cf6/67ef8f1d378e00c0013aacc1_WhatsApp%20Image%202025-03-27%20at%2018.16.19.png"
+  },
+  {
+    slug: "retour-sur-le-hackathon-go-fusion",
+    title: "Retour sur le hackathon Go Fusion",
+    category: "pedagogie",
+    categoryLabel: "Pedagogie",
+    author: "Noe M.",
+    date: "2025-04-02",
+    readTime: 4,
+    excerpt: "Immersion dans le hackathon Go Fusion : 3 jours intenses de challenge data avec nos etudiants.",
+    image: "https://cdn.prod.website-files.com/67ab8ba4ea1a5d633ea28cf6/67ed5805153bfdd509f2ab55_gofusion2.jpg"
+  },
+  {
+    slug: "que-faire-apres-un-bac-stmg",
+    title: "Que faire apres un bac STMG ?",
+    category: "bachelor",
+    categoryLabel: "Bachelor",
+    author: "Noe M.",
+    date: "2025-03-26",
+    readTime: 6,
+    excerpt: "Toutes les options d'orientation apres un bac STMG : ecoles, formations et debouches.",
+    image: "https://cdn.prod.website-files.com/67ab8ba4ea1a5d633ea28cf6/67e416848d3cc1888589a265_3regards%20%C3%A9tudiants.jpeg"
+  },
+  {
+    slug: "importance-esprit-critique-decrypter-enjeux-monde",
+    title: "L'importance de l'esprit critique pour decrypter les enjeux du monde qui nous entoure",
+    category: "pedagogie",
+    categoryLabel: "Pedagogie",
+    author: "Mathilde N.",
+    date: "2025-01-19",
+    readTime: 7,
+    excerpt: "Pourquoi l'esprit critique est une competence essentielle a developper pour comprendre notre monde.",
+    image: "https://cdn.prod.website-files.com/67ab8ba4ea1a5d633ea28cf6/67b460d119be4980c86a4ccd_image3.avif"
+  },
+  {
+    slug: "maintenir-attentin-etudiants-enseignement-superieur",
+    title: "Maintenir l'attention des etudiants dans l'enseignement superieur : Un defi psychologique et cognitif",
+    category: "pedagogie",
+    categoryLabel: "Pedagogie",
+    author: "Marie de Rosen",
+    date: "2025-01-15",
+    readTime: 8,
+    excerpt: "Comment capter et maintenir l'attention des etudiants ? Approches pedagogiques et cognitives.",
+    image: "https://cdn.prod.website-files.com/67ab8ba4ea1a5d633ea28cf6/67b4611422a873610acbb6ca_image4.avif"
+  },
+  {
+    slug: "intelligence-artificielle-revolutionne-education",
+    title: "L'intelligence artificielle revolutionne l'education",
+    category: "actualites",
+    categoryLabel: "Actualites",
+    author: "Reuben Macejkovic",
+    date: "2025-01-07",
+    readTime: 6,
+    excerpt: "Comment l'IA transforme les methodes d'enseignement et d'apprentissage dans l'education.",
+    image: "https://cdn.prod.website-files.com/67ab8ba4ea1a5d633ea28cf6/67b46136a8ab15bb14cb152e_image5.avif"
   }
 ];
 
