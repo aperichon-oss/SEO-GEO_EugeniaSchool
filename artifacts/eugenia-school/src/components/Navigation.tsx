@@ -34,10 +34,7 @@ const navLinks: NavItem[] = [
     subLinks: [
       { label: "Nos programmes", href: "/formations", description: "Comparateur Bachelor vs MSc" },
       { label: "Bachelor IA & Business", href: "/formations/bachelor", description: "Bac+3 en alternance" },
-      { label: "Bachelor 1ère année", href: "/formations/bachelor-1a", description: "Admission post-bac" },
-      { label: "MSc IA & Business", href: "/formations/msc", description: "Bac+5 double diplôme GEM" },
-      { label: "Certification Data", href: "/formations/certification-data", description: "Formation certifiante" },
-      { label: "Programme détaillé", href: "/formations/programme-annee-par-annee", description: "Curriculum complet" },
+      { label: "MSc IA & Business", href: "/formations/msc", description: "Bac+5 double diplôme GEM" }
     ],
   },
   {
@@ -111,8 +108,8 @@ function DropdownMenu({ item, isOpen, onMouseEnter, onMouseLeave }: {
       <Link
         href={item.href}
         className={`flex items-center gap-1 px-3 py-2 rounded-lg text-[14px] font-medium transition-colors ${isActive
-            ? "text-[#0A0A0A] bg-[#F5F2EE]"
-            : "text-[#3A3A3A] hover:text-[#0A0A0A] hover:bg-[#F5F2EE]"
+          ? "text-[#0A0A0A] bg-[#F5F2EE]"
+          : "text-[#3A3A3A] hover:text-[#0A0A0A] hover:bg-[#F5F2EE]"
           }`}
       >
         {item.label}
@@ -293,8 +290,8 @@ export function Navigation() {
                       <button
                         onClick={() => setExpandedMobileSection(isExpanded ? null : item.label)}
                         className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold transition-colors ${isActive
-                            ? "text-[#0A0A0A] bg-[#F5F2EE]"
-                            : "text-[#3A3A3A] hover:text-[#0A0A0A] hover:bg-[#F5F2EE]"
+                          ? "text-[#0A0A0A] bg-[#F5F2EE]"
+                          : "text-[#3A3A3A] hover:text-[#0A0A0A] hover:bg-[#F5F2EE]"
                           }`}
                       >
                         {item.label}
