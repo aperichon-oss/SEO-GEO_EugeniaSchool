@@ -107,8 +107,8 @@ function normalizeCategory(cat: string): string {
   if (normalized.includes("actualite")) return "actualites";
   if (normalized.includes("pedagogie")) return "pedagogie";
   if (normalized.includes("bachelor")) return "bachelor";
-  if (normalized.includes("business") || normalized.includes("deep")) || normalized.includes("dives") return "business-deep-dives";
-  if (normalized.includes("stmg")) return "stmg";
+  if (normalized.includes("business") || normalized.includes("deep") || normalized.includes("dives")) return "business-deep-dives";
+  if (normalized.includes("master")) return "master";
   if (normalized.includes("entrepreneur")) return "entrepreneuriat";
 
   return normalized.replace(/\s+/g, "-");
