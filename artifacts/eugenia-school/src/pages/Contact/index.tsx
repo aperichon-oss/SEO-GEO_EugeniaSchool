@@ -25,7 +25,7 @@ const formSchema = z.object({
 
 export default function Contact() {
   const { toast } = useToast();
-  
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -49,9 +49,9 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen flex flex-col font-sans">
-      <SeoHead 
-        title="Contact | Eugenia School" 
-        description="Contactez l'équipe Eugenia School pour toute question concernant les admissions, les programmes ou les partenariats." 
+      <SeoHead
+        title="Contact | Eugenia School"
+        description="Contactez l'équipe Eugenia School pour toute question concernant les admissions, les programmes ou les partenariats."
       />
       <AnnouncementBar />
       <Navigation />
@@ -59,11 +59,11 @@ export default function Contact() {
       <main className="flex-1 bg-[#F5F2EE]">
         <div className="bg-[#0A0A0A] text-white pt-12 pb-24 border-b border-[#2A2A2A]">
           <div className="container mx-auto px-6">
-            <Breadcrumb 
+            <Breadcrumb
               items={[
                 { label: "Accueil", href: "/" },
                 { label: "Contact" }
-              ]} 
+              ]}
             />
             <div className="max-w-3xl mt-8">
               <h1 className="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight">Contactez-nous</h1>
@@ -75,7 +75,7 @@ export default function Contact() {
         <section className="py-20">
           <div className="container mx-auto px-6">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-              
+
               {/* Form Column */}
               <div className="lg:col-span-8 bg-white rounded-2xl p-8 border border-[#E0DDD8] shadow-sm">
                 <h2 className="text-2xl font-bold text-[#0A0A0A] mb-8">Envoyez-nous un message</h2>
@@ -169,10 +169,10 @@ export default function Contact() {
                         <FormItem>
                           <FormLabel className="text-[#0A0A0A] font-bold">Message</FormLabel>
                           <FormControl>
-                            <Textarea 
-                              placeholder="Comment pouvons-nous vous aider ?" 
-                              className="bg-[#F5F2EE] border-[#E0DDD8] focus-visible:ring-[#8B2346] min-h-[150px] resize-y" 
-                              {...field} 
+                            <Textarea
+                              placeholder="Comment pouvons-nous vous aider ?"
+                              className="bg-[#F5F2EE] border-[#E0DDD8] focus-visible:ring-[#8B2346] min-h-[150px] resize-y"
+                              {...field}
                             />
                           </FormControl>
                           <FormMessage />
@@ -197,8 +197,8 @@ export default function Contact() {
                       <div>
                         <div className="font-bold mb-1">Adresse</div>
                         <div className="text-[#9E9E9E] leading-relaxed">
-                          18 rue du Faubourg du Temple<br />
-                          75011 Paris, France
+                          18 rue de Paradis<br />
+                          75010 Paris, France
                         </div>
                       </div>
                     </div>
@@ -238,7 +238,7 @@ export default function Contact() {
           </div>
         </section>
       </main>
-      
+
       <Footer />
     </div>
   );

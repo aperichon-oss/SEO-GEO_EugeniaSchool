@@ -5,6 +5,8 @@ import { SeoHead } from "@/components/SeoHead";
 import { AnnouncementBar } from "@/components/AnnouncementBar";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
+import { BlogSection } from "@/components/BlogSection";
+import { SocialMediaSection } from "@/components/SocialMediaSection";
 import { hackathons, metiers } from "@/lib/data";
 
 const CDN = "https://cdn.prod.website-files.com/67ab1d492136bb5f36b3ec6b";
@@ -141,105 +143,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* STUDENT IMAGES */}
-        <section className="py-16 bg-gray-50">
-          <div className="container mx-auto px-4">
-            <div className="grid md:grid-cols-2 gap-8 items-center">
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeIn}
-                className="relative"
-              >
-                <img
-                  src={`${CDN}/67ceecb5b6bd0e19228ec3c9_Imanerond.avif`}
-                  alt="Une alumni d'Eugenia school sur la homepage"
-                  className="rounded-lg shadow-2xl w-full h-96 object-cover"
-                  loading="lazy"
-                />
-              </motion.div>
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeIn}
-                className="relative"
-              >
-                <img
-                  src={`${CDN}/67ceef2e9b9745a770b55d80_Jonasrond.avif`}
-                  alt="Un étudiant de bachelor est souriant"
-                  className="rounded-lg shadow-2xl w-full h-96 object-cover"
-                  loading="lazy"
-                />
-              </motion.div>
-            </div>
-          </div>
-        </section>
-
-        {/* ENTERPRISE CASES */}
-        <section className="py-20 bg-white">
-          <div className="container mx-auto px-4">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={stagger}
-              className="text-center mb-16"
-            >
-              <motion.h2
-                variants={fadeIn}
-                className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
-              >
-                DES CAS RÉELS D'ENTREPRISES PARTENAIRES
-              </motion.h2>
-              <motion.p
-                variants={fadeIn}
-                className="text-xl text-gray-600 max-w-3xl mx-auto"
-              >
-                Découvrez comment nos étudiants travaillent sur des projets concrets avec les leaders du marché
-              </motion.p>
-            </motion.div>
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={stagger}
-              className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-9 gap-6 items-center justify-items-center mb-12"
-            >
-              {enterpriseLogos.map((logo, index) => (
-                <motion.div
-                  key={index}
-                  variants={fadeIn}
-                  className="flex items-center justify-center h-12 w-24 grayscale hover:grayscale-0 transition-all duration-300"
-                >
-                  <img
-                    src={logo.src}
-                    alt={logo.name}
-                    className="max-h-full max-w-full object-contain"
-                    loading="lazy"
-                  />
-                </motion.div>
-              ))}
-            </motion.div>
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeIn}
-              className="text-center"
-            >
-              <Link
-                href="/entreprises-partenaires"
-                className="inline-flex items-center gap-2 bg-[#8B2346] hover:bg-[#6B1A35] text-white px-8 py-4 rounded-lg font-semibold transition-colors duration-200"
-              >
-                Découvrir nos partenaires
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-            </motion.div>
-          </div>
-        </section>
-
         {/* ACADEMIC LIFE */}
         <section className="py-20 bg-gray-50">
           <div className="container mx-auto px-4">
@@ -314,6 +217,69 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ENTERPRISE CASES */}
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-4">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={stagger}
+              className="text-center mb-16"
+            >
+              <motion.h2
+                variants={fadeIn}
+                className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
+              >
+                DES CAS RÉELS D'ENTREPRISES PARTENAIRES
+              </motion.h2>
+              <motion.p
+                variants={fadeIn}
+                className="text-xl text-gray-600 max-w-3xl mx-auto"
+              >
+                Découvrez comment nos étudiants travaillent sur des projets concrets avec les leaders du marché
+              </motion.p>
+            </motion.div>
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={stagger}
+              className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-9 gap-6 items-center justify-items-center mb-12"
+            >
+              {enterpriseLogos.map((logo, index) => (
+                <motion.div
+                  key={index}
+                  variants={fadeIn}
+                  className="flex items-center justify-center h-12 w-24 grayscale hover:grayscale-0 transition-all duration-300"
+                >
+                  <img
+                    src={logo.src}
+                    alt={logo.name}
+                    className="max-h-full max-w-full object-contain"
+                    loading="lazy"
+                  />
+                </motion.div>
+              ))}
+            </motion.div>
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeIn}
+              className="text-center"
+            >
+              <Link
+                href="/entreprises-partenaires"
+                className="inline-flex items-center gap-2 bg-[#8B2346] hover:bg-[#6B1A35] text-white px-8 py-4 rounded-lg font-semibold transition-colors duration-200"
+              >
+                Découvrir nos partenaires
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+            </motion.div>
+          </div>
+        </section>
+
         {/* CHALLENGES */}
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4">
@@ -375,9 +341,9 @@ export default function Home() {
                 variants={fadeIn}
                 className="bg-gradient-to-br from-[#FEF5E0] to-[#FDECC8] p-8 rounded-xl"
               >
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">MSc Géniathon</h3>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">MSc Hackathon</h3>
                 <p className="text-gray-700 mb-6">
-                  Les Géniathons des Master of Science permettent aux étudiants de travailler en mode hackathon
+                  Les Hackathon des Master of Science permettent aux étudiants de travailler en mode hackathon
                   pendant 1 à 3 jours sur des cas data et business, proposés par nos entreprises partenaires.
                   Une immersion intensive pour mettre à profit leurs compétences acquises en alternance et en développer de nouvelles.
                 </p>
@@ -453,7 +419,10 @@ export default function Home() {
                 >
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="text-xl font-bold">{metier.title}</h3>
-                    <span className="text-2xl font-bold text-[#8B2346]">{metier.salaryEntry.min}-{metier.salaryEntry.max}k</span>
+                    <span className="text-2xl font-bold text-[#8B2346]">
+                      {Math.round(metier.salaryEntry.min / 1000)}-
+                      {Math.round(metier.salaryEntry.max / 1000)}k
+                    </span>
                   </div>
                   <p className="text-gray-300 text-sm mb-4">{metier.description}</p>
                   <Link
@@ -554,26 +523,15 @@ export default function Home() {
           </div>
         </section>
 
-        {/* BLOG */}
-        <section className="py-20 bg-gray-50">
-          <div className="container mx-auto px-4">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeIn}
-              className="text-center mb-16"
-            >
-              <Link
-                href="/blog"
-                className="inline-flex items-center gap-2 text-[#8B2346] hover:text-[#6B1A35] font-semibold text-lg"
-              >
-                Le blog
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </motion.div>
-          </div>
-        </section>
+        {/* SOCIAL MEDIA */}
+        <SocialMediaSection />
+
+        {/* BLOG - Dynamic from Google Sheets */}
+        <BlogSection
+          limit={3}
+          title="Dernieres actualites"
+          subtitle="Restez informes des dernieres nouvelles d'Eugenia School, de nos hackathons et de l'actualite IA & Business."
+        />
 
         {/* CTA */}
         <section className="py-20 bg-[#8B2346] text-white">
