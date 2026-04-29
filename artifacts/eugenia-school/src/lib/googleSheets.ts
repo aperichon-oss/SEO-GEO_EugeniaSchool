@@ -186,25 +186,19 @@ function extractGlossary(content: string, articleTitle: string, articleSlug: str
 
 // Convert static blog posts to BlogArticle format
 function convertStaticPosts(): BlogArticle[] {
-  return staticBlogPosts.map(post => {
-    const categories = Array.isArray(post.category)
-      ? post.category
-      : [post.category];
-
-    return {
-      slug: post.slug,
-      title: post.title,
-      category: categories,
-      categoryLabel: getCategoryLabel(categories),
-      excerpt: post.excerpt,
-      content: "",
-      author: post.author,
-      date: post.date,
-      image: post.image || "https://cdn.prod.website-files.com/67ab8ba4ea1a5d633ea28cf6/684be468cd31c303843065c1_Data%20engi%2Canalyst%2Cscientis.png",
-      readTime: post.readTime,
-      glossary: []
-    };
-  });
+  return staticBlogPosts.map(post => ({
+    slug: post.slug,
+    title: post.title,
+    category: post.category, // maintenant string[]
+    categoryLabel: post.categoryLabel,
+    excerpt: post.excerpt,
+    content: "",
+    author: post.author,
+    date: post.date,
+    image: post.image || "https://cdn.prod.website-files.com/67ab8ba4ea1a5d633ea28cf6/684be468cd31c303843065c1_Data%20engi%2Canalyst%2Cscientis.png",
+    readTime: post.readTime,
+    glossary: []
+  }));
 }
 
 // Fetch articles from Google Sheets
