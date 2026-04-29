@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { Linkedin, Instagram, Youtube, Twitter } from "lucide-react";
+import { Linkedin, Instagram, Youtube, Twitter, Facebook } from "lucide-react";
 
 const footerSections = [
   {
@@ -139,10 +139,10 @@ export function Footer() {
           {/* Social Links */}
           <div className="flex gap-3">
             {[
-              { Icon: Linkedin, label: "LinkedIn", url: "https://linkedin.com/school/eugeniaschool" },
-              { Icon: Instagram, label: "Instagram", url: "https://instagram.com/eugeniaschool" },
-              { Icon: Youtube, label: "YouTube", url: "https://youtube.com/@eugeniaschool" },
-              { Icon: Twitter, label: "Twitter", url: "https://twitter.com/eugeniaschool" },
+              { Icon: Linkedin, label: "LinkedIn", url: "https://www.linkedin.com/school/eugenia-school/?viewAsMember=true" },
+              { Icon: Instagram, label: "Instagram", url: "https://www.instagram.com/eugenia.school/" },
+              { Icon: Youtube, label: "YouTube", url: "https://www.youtube.com/@EugeniaSchool" },
+              { Icon: Facebook, label: "Facebook", url: "https://www.facebook.com/EugeniaSchoolGroupeAGDS/?profile_tab_item_selected=about&_rdr" },
             ].map(({ Icon, label, url }) => (
               <a
                 key={label}
