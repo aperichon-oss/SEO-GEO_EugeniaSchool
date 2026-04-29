@@ -143,105 +143,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* STUDENT IMAGES */}
-        <section className="py-16 bg-gray-50">
-          <div className="container mx-auto px-4">
-            <div className="grid md:grid-cols-2 gap-8 items-center">
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeIn}
-                className="relative"
-              >
-                <img
-                  src={`${CDN}/67ceecb5b6bd0e19228ec3c9_Imanerond.avif`}
-                  alt="Une alumni d'Eugenia school sur la homepage"
-                  className="rounded-lg shadow-2xl w-full h-96 object-cover"
-                  loading="lazy"
-                />
-              </motion.div>
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeIn}
-                className="relative"
-              >
-                <img
-                  src={`${CDN}/67ceef2e9b9745a770b55d80_Jonasrond.avif`}
-                  alt="Un étudiant de bachelor est souriant"
-                  className="rounded-lg shadow-2xl w-full h-96 object-cover"
-                  loading="lazy"
-                />
-              </motion.div>
-            </div>
-          </div>
-        </section>
-
-        {/* ENTERPRISE CASES */}
-        <section className="py-20 bg-white">
-          <div className="container mx-auto px-4">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={stagger}
-              className="text-center mb-16"
-            >
-              <motion.h2
-                variants={fadeIn}
-                className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
-              >
-                DES CAS RÉELS D'ENTREPRISES PARTENAIRES
-              </motion.h2>
-              <motion.p
-                variants={fadeIn}
-                className="text-xl text-gray-600 max-w-3xl mx-auto"
-              >
-                Découvrez comment nos étudiants travaillent sur des projets concrets avec les leaders du marché
-              </motion.p>
-            </motion.div>
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={stagger}
-              className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-9 gap-6 items-center justify-items-center mb-12"
-            >
-              {enterpriseLogos.map((logo, index) => (
-                <motion.div
-                  key={index}
-                  variants={fadeIn}
-                  className="flex items-center justify-center h-12 w-24 grayscale hover:grayscale-0 transition-all duration-300"
-                >
-                  <img
-                    src={logo.src}
-                    alt={logo.name}
-                    className="max-h-full max-w-full object-contain"
-                    loading="lazy"
-                  />
-                </motion.div>
-              ))}
-            </motion.div>
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeIn}
-              className="text-center"
-            >
-              <Link
-                href="/entreprises-partenaires"
-                className="inline-flex items-center gap-2 bg-[#8B2346] hover:bg-[#6B1A35] text-white px-8 py-4 rounded-lg font-semibold transition-colors duration-200"
-              >
-                Découvrir nos partenaires
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-            </motion.div>
-          </div>
-        </section>
-
         {/* ACADEMIC LIFE */}
         <section className="py-20 bg-gray-50">
           <div className="container mx-auto px-4">
@@ -313,6 +214,69 @@ export default function Home() {
                 </div>
               </motion.div>
             </div>
+          </div>
+        </section>
+
+        {/* ENTERPRISE CASES */}
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-4">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={stagger}
+              className="text-center mb-16"
+            >
+              <motion.h2
+                variants={fadeIn}
+                className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
+              >
+                DES CAS RÉELS D'ENTREPRISES PARTENAIRES
+              </motion.h2>
+              <motion.p
+                variants={fadeIn}
+                className="text-xl text-gray-600 max-w-3xl mx-auto"
+              >
+                Découvrez comment nos étudiants travaillent sur des projets concrets avec les leaders du marché
+              </motion.p>
+            </motion.div>
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={stagger}
+              className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-9 gap-6 items-center justify-items-center mb-12"
+            >
+              {enterpriseLogos.map((logo, index) => (
+                <motion.div
+                  key={index}
+                  variants={fadeIn}
+                  className="flex items-center justify-center h-12 w-24 grayscale hover:grayscale-0 transition-all duration-300"
+                >
+                  <img
+                    src={logo.src}
+                    alt={logo.name}
+                    className="max-h-full max-w-full object-contain"
+                    loading="lazy"
+                  />
+                </motion.div>
+              ))}
+            </motion.div>
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeIn}
+              className="text-center"
+            >
+              <Link
+                href="/entreprises-partenaires"
+                className="inline-flex items-center gap-2 bg-[#8B2346] hover:bg-[#6B1A35] text-white px-8 py-4 rounded-lg font-semibold transition-colors duration-200"
+              >
+                Découvrir nos partenaires
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+            </motion.div>
           </div>
         </section>
 
