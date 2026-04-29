@@ -105,10 +105,9 @@ function normalizeCategory(cat: string): string {
 
   // Map common variations to official categories
   if (normalized.includes("actualite")) return "actualites";
-  if (normalized.includes("pedagog")) return "pedagogie";
+  if (normalized.includes("pedagogie")) return "pedagogie";
   if (normalized.includes("bachelor")) return "bachelor";
-  if (normalized.includes("stage") || normalized.includes("alternance")) return "stages-alternances";
-  if (normalized.includes("bien") || normalized.includes("etre") || normalized.includes("wellness")) return "bien-etre";
+  if (normalized.includes("business") || normalized.includes("deep")) || normalized.includes("dives") return "business-deep-dives";
   if (normalized.includes("stmg")) return "stmg";
   if (normalized.includes("entrepreneur")) return "entrepreneuriat";
 
