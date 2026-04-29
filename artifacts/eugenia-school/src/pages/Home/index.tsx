@@ -6,6 +6,7 @@ import { AnnouncementBar } from "@/components/AnnouncementBar";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { BlogSection } from "@/components/BlogSection";
+import { SocialMediaSection } from "@/components/SocialMediaSection";
 import { hackathons, metiers } from "@/lib/data";
 
 const CDN = "https://cdn.prod.website-files.com/67ab1d492136bb5f36b3ec6b";
@@ -557,6 +558,9 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* SOCIAL MEDIA */}
+        <SocialMediaSection />
 
         {/* BLOG - Dynamic from Google Sheets */}
         <BlogSection 

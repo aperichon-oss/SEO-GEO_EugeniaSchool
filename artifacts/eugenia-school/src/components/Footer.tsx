@@ -71,6 +71,7 @@ const secondaryLinks = [
   { label: "Partenaires", href: "/partenaires" },
   { label: "Presse", href: "/presse" },
   { label: "Blog", href: "/blog" },
+  { label: "Glossaire", href: "/glossaire" },
   { label: "FAQ", href: "/faq" },
   { label: "Événements", href: "/evenements" },
   { label: "Brochure", href: "/brochure" },

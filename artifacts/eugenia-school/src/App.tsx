@@ -37,6 +37,7 @@ import Temoignages from "@/pages/Temoignages";
 import PartenairesHub from "@/pages/PartenairesHub";
 import Presse from "@/pages/Presse";
 import Brochure from "@/pages/Brochure";
+import Glossaire from "@/pages/Glossaire";
 
 const queryClient = new QueryClient();
 
@@ -136,6 +137,7 @@ function Router() {
       <Route path="/blog" component={BlogHub} />
       <Route path="/blog/categorie/:cat" component={BlogHub} />
       <Route path="/blog/:slug" component={BlogPost} />
+      <Route path="/glossaire" component={Glossaire} />
 
       {/* ==================== CANDIDATURE & BROCHURE ==================== */}
       <Route path="/candidature" component={Candidature} />

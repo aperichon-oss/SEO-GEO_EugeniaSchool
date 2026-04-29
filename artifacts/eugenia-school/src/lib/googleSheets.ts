@@ -1,6 +1,8 @@
 // Google Sheets integration for dynamic blog content
 // Sheet ID: 1r-CJP3PEefS9YBZbk9d4lbGoSPcRdTGPAS09c_CiN_Y
 
+import { blogPosts as staticBlogPosts } from "./data";
+
 const SHEET_ID = "1r-CJP3PEefS9YBZbk9d4lbGoSPcRdTGPAS09c_CiN_Y";
 
 // Categories for blog articles
@@ -12,6 +14,10 @@ export const blogCategories = [
   { label: "Bachelor", slug: "bachelor" },
   { label: "Entrepreneuriat", slug: "entrepreneuriat" },
   { label: "Master", slug: "master" },
+  { label: "IA et Data", slug: "ia-et-data" },
+  { label: "Business et Carrieres", slug: "business-carrieres" },
+  { label: "Orientation", slug: "orientation" },
+  { label: "Vie Eugenia", slug: "vie-eugenia" },
 ];
 
 export interface BlogArticle {
@@ -25,6 +31,14 @@ export interface BlogArticle {
   date: string;
   image: string;
   readTime?: number;
+  glossary?: GlossaryTerm[];
+}
+
+export interface GlossaryTerm {
+  term: string;
+  definition: string;
+  sourceArticle?: string;
+  sourceSlug?: string;
 }
 
 // Function to convert Google Sheets URL to CSV export URL
@@ -95,11 +109,15 @@ function normalizeCategory(cat: string): string {
   
   // Map common variations
   if (normalized.includes("actualite")) return "actualites";
-  if (normalized.includes("business") || normalized.includes("deep dive")) return "business-deep-dives";
+  if (normalized.includes("business") && normalized.includes("deep")) return "business-deep-dives";
+  if (normalized.includes("business") && normalized.includes("carriere")) return "business-carrieres";
   if (normalized.includes("pedagog")) return "pedagogie";
   if (normalized.includes("bachelor")) return "bachelor";
   if (normalized.includes("entrepreneur")) return "entrepreneuriat";
   if (normalized.includes("master") || normalized.includes("msc")) return "master";
+  if (normalized.includes("ia") || normalized.includes("data")) return "ia-et-data";
+  if (normalized.includes("orientation")) return "orientation";
+  if (normalized.includes("vie") || normalized.includes("eugenia")) return "vie-eugenia";
   
   return normalized.replace(/\s+/g, "-");
 }
@@ -125,6 +143,55 @@ function findColumnIndex(headers: string[], ...possibleNames: string[]): number 
   return -1;
 }
 
+// Extract glossary terms from markdown content
+// Expects format: ## Glossaire\n- **Term**: Definition\n- **Term2**: Definition2
+function extractGlossary(content: string, articleTitle: string, articleSlug: string): GlossaryTerm[] {
+  const glossaryTerms: GlossaryTerm[] = [];
+  
+  // Find glossary section
+  const glossaryMatch = content.match(/##\s*Glossaire\s*\n([\s\S]*?)(?=\n##|$)/i);
+  if (!glossaryMatch) return glossaryTerms;
+  
+  const glossarySection = glossaryMatch[1];
+  
+  // Match patterns like "- **Term**: Definition" or "* **Term**: Definition"
+  const termPattern = /[-*]\s*\*\*([^*]+)\*\*\s*:\s*([^\n]+)/g;
+  let match;
+  
+  while ((match = termPattern.exec(glossarySection)) !== null) {
+    const term = match[1].trim();
+    const definition = match[2].trim();
+    
+    if (term && definition) {
+      glossaryTerms.push({
+        term,
+        definition,
+        sourceArticle: articleTitle,
+        sourceSlug: articleSlug
+      });
+    }
+  }
+  
+  return glossaryTerms;
+}
+
+// Convert static blog posts to BlogArticle format
+function convertStaticPosts(): BlogArticle[] {
+  return staticBlogPosts.map(post => ({
+    slug: post.slug,
+    title: post.title,
+    category: post.category,
+    categoryLabel: post.categoryLabel,
+    excerpt: post.excerpt,
+    content: "", // Static posts don't have full content
+    author: post.author,
+    date: post.date,
+    image: "https://cdn.prod.website-files.com/67ab8ba4ea1a5d633ea28cf6/684be468cd31c303843065c1_Data%20engi%2Canalyst%2Cscientis.png",
+    readTime: post.readTime,
+    glossary: []
+  }));
+}
+
 // Fetch articles from Google Sheets
 export async function fetchArticlesFromSheet(): Promise<BlogArticle[]> {
   try {
@@ -135,14 +202,17 @@ export async function fetchArticlesFromSheet(): Promise<BlogArticle[]> {
     
     if (!response.ok) {
       console.error("[v0] Failed to fetch Google Sheet:", response.status);
-      return [];
+      // Return static posts if Google Sheets fails
+      return convertStaticPosts();
     }
     
     const csv = await response.text();
     const rows = parseCsv(csv);
     
     // Need at least header + 1 data row
-    if (rows.length <= 1) return [];
+    if (rows.length <= 1) {
+      return convertStaticPosts();
+    }
     
     const headers = rows[0].map(h => h.toLowerCase().trim());
     
@@ -158,7 +228,7 @@ export async function fetchArticlesFromSheet(): Promise<BlogArticle[]> {
     
     if (titleIdx === -1) {
       console.error("[v0] Could not find 'Titles' column in Google Sheet");
-      return [];
+      return convertStaticPosts();
     }
     
     const articles: BlogArticle[] = [];
@@ -180,13 +250,17 @@ export async function fetchArticlesFromSheet(): Promise<BlogArticle[]> {
       
       // Determine category
       const category = normalizeCategory(categoryRaw);
+      const slug = generateSlug(title);
+      
+      // Extract glossary terms from content
+      const glossary = extractGlossary(content, title, slug);
       
       // Calculate read time based on content length (average 200 words per minute)
       const wordCount = content.split(/\s+/).length;
       const readTime = Math.max(3, Math.ceil(wordCount / 200));
       
       articles.push({
-        slug: generateSlug(title),
+        slug,
         title,
         category,
         categoryLabel: getCategoryLabel(category),
@@ -196,7 +270,18 @@ export async function fetchArticlesFromSheet(): Promise<BlogArticle[]> {
         date,
         image,
         readTime,
+        glossary
       });
+    }
+    
+    // Combine with static posts (avoiding duplicates by slug)
+    const staticPosts = convertStaticPosts();
+    const allSlugs = new Set(articles.map(a => a.slug));
+    
+    for (const staticPost of staticPosts) {
+      if (!allSlugs.has(staticPost.slug)) {
+        articles.push(staticPost);
+      }
     }
     
     // Sort by date (newest first)
@@ -205,11 +290,39 @@ export async function fetchArticlesFromSheet(): Promise<BlogArticle[]> {
     return articles;
   } catch (error) {
     console.error("[v0] Error fetching articles from Google Sheet:", error);
-    return [];
+    return convertStaticPosts();
   }
+}
+
+// Extract all unique glossary terms from all articles
+export async function fetchAllGlossaryTerms(): Promise<GlossaryTerm[]> {
+  const articles = await fetchArticlesFromSheet();
+  const termsMap = new Map<string, GlossaryTerm>();
+  
+  for (const article of articles) {
+    if (article.glossary) {
+      for (const term of article.glossary) {
+        const normalizedTerm = term.term.toLowerCase().trim();
+        // Only add if not already present (avoid duplicates)
+        if (!termsMap.has(normalizedTerm)) {
+          termsMap.set(normalizedTerm, term);
+        }
+      }
+    }
+  }
+  
+  // Sort alphabetically
+  const terms = Array.from(termsMap.values());
+  terms.sort((a, b) => a.term.localeCompare(b.term, 'fr'));
+  
+  return terms;
 }
 
 // Hook-friendly function to use with SWR/React Query
 export function getArticlesFetcher() {
   return fetchArticlesFromSheet;
+}
+
+export function getGlossaryFetcher() {
+  return fetchAllGlossaryTerms;
 }
