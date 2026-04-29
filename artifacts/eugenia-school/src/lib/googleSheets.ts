@@ -148,26 +148,26 @@ function extractGlossary(content: string, articleTitle: string, articleSlug: str
   const glossaryTerms: GlossaryTerm[] = [];
   
   // Find glossary section - supports "## Glossaire", "## Le Glossaire Eugenia", etc.
-  const glossaryMatch = content.match(/##\s*(?:Le\s+)?Glossaire(?:\s+Eugenia)?\s*\n([\s\S]*?)(?=\n##(?!#)|$)/i);
+  // Capture everything after the glossary header until end of content or next ## (not ###)
+  const glossaryMatch = content.match(/##\s*(?:Le\s+)?Glossaire(?:\s+Eugenia)?\s*\n([\s\S]*?)(?=\n##\s+[^#]|$)/i);
   if (!glossaryMatch) return glossaryTerms;
   
   const glossarySection = glossaryMatch[1];
   
-  // Match patterns like "### Term (English)\nDefinition text"
-  // Split by ### to get each term block
-  const termBlocks = glossarySection.split(/\n###\s+/).filter(block => block.trim());
+  // Find all ### headers and their content
+  // Regex to match ### followed by term, then everything until next ### or end
+  const termRegex = /###\s+([^\n]+)\n([\s\S]*?)(?=\n###|$)/g;
+  let match;
   
-  for (const block of termBlocks) {
-    const lines = block.split('\n');
-    const termLine = lines[0]?.trim();
+  while ((match = termRegex.exec(glossarySection)) !== null) {
+    const termLine = match[1]?.trim();
+    const definition = match[2]?.trim();
     
     if (!termLine) continue;
     
-    // Extract term (may include parenthetical like "IA generative (Generative AI)")
-    const term = termLine.replace(/\s*\([^)]+\)\s*$/, '').trim();
-    
-    // Rest of the block is the definition
-    const definition = lines.slice(1).join(' ').trim();
+    // Extract term - keep full term including parenthetical for display
+    // e.g., "IA generative (Generative AI)" stays as "IA generative (Generative AI)"
+    const term = termLine;
     
     if (term && definition) {
       glossaryTerms.push({
@@ -193,7 +193,7 @@ function convertStaticPosts(): BlogArticle[] {
     content: "", // Static posts don't have full content
     author: post.author,
     date: post.date,
-    image: "https://cdn.prod.website-files.com/67ab8ba4ea1a5d633ea28cf6/684be468cd31c303843065c1_Data%20engi%2Canalyst%2Cscientis.png",
+    image: post.image || "https://cdn.prod.website-files.com/67ab8ba4ea1a5d633ea28cf6/684be468cd31c303843065c1_Data%20engi%2Canalyst%2Cscientis.png",
     readTime: post.readTime,
     glossary: []
   }));
