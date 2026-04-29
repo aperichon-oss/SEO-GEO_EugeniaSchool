@@ -18,10 +18,7 @@ const footerSections = [
     links: [
       { label: "Nos programmes", href: "/formations" },
       { label: "Bachelor IA & Business", href: "/formations/bachelor" },
-      { label: "Bachelor 1ère année", href: "/formations/bachelor-1a" },
-      { label: "MSc IA & Business", href: "/formations/msc" },
-      { label: "Certification Data", href: "/formations/certification-data" },
-      { label: "Programme détaillé", href: "/formations/programme-annee-par-annee" },
+      { label: "MSc IA & Business", href: "/formations/msc" }
     ],
   },
   {
