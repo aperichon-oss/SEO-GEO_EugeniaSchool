@@ -88,9 +88,13 @@ function parseCsv(csv: string): string[][] {
 }
 
 // Map category slug to label
-function getCategoryLabel(slug: string): string {
-  const category = blogCategories.find((c) => c.slug === slug);
-  return category?.label || slug;
+function getCategoryLabel(slugs: string[]): string {
+  return slugs
+    .map(slug => {
+      const category = blogCategories.find((c) => c.slug === slug);
+      return category?.label || slug;
+    })
+    .join(", ");
 }
 
 // Normalize category string to slug - matching eugeniaschool.com categories
@@ -182,19 +186,25 @@ function extractGlossary(content: string, articleTitle: string, articleSlug: str
 
 // Convert static blog posts to BlogArticle format
 function convertStaticPosts(): BlogArticle[] {
-  return staticBlogPosts.map(post => ({
-    slug: post.slug,
-    title: post.title,
-    category: post.category, // maintenant string[]
-    categoryLabel: post.categoryLabel,
-    excerpt: post.excerpt,
-    content: "",
-    author: post.author,
-    date: post.date,
-    image: post.image || "https://cdn.prod.website-files.com/67ab8ba4ea1a5d633ea28cf6/684be468cd31c303843065c1_Data%20engi%2Canalyst%2Cscientis.png",
-    readTime: post.readTime,
-    glossary: []
-  }));
+  return staticBlogPosts.map(post => {
+    const categories = Array.isArray(post.category)
+      ? post.category
+      : [post.category];
+
+    return {
+      slug: post.slug,
+      title: post.title,
+      category: categories,
+      categoryLabel: getCategoryLabel(categories),
+      excerpt: post.excerpt,
+      content: "",
+      author: post.author,
+      date: post.date,
+      image: post.image || "https://cdn.prod.website-files.com/67ab8ba4ea1a5d633ea28cf6/684be468cd31c303843065c1_Data%20engi%2Canalyst%2Cscientis.png",
+      readTime: post.readTime,
+      glossary: []
+    };
+  });
 }
 
 // Fetch articles from Google Sheets
@@ -254,7 +264,9 @@ export async function fetchArticlesFromSheet(): Promise<BlogArticle[]> {
         : "https://cdn.prod.website-files.com/67ab8ba4ea1a5d633ea28cf6/684be468cd31c303843065c1_Data%20engi%2Canalyst%2Cscientis.png";
 
       // Determine category
-      const category = normalizeCategory(categoryRaw);
+      const category = categoryRaw
+        ? categoryRaw.split(",").map(cat => normalizeCategory(cat.trim()))
+        : ["actualites"];
       const slug = generateSlug(title);
 
       // Extract glossary terms from content
