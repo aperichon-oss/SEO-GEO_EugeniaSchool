@@ -5,19 +5,16 @@ import { blogPosts as staticBlogPosts } from "./data";
 
 const SHEET_ID = "1r-CJP3PEefS9YBZbk9d4lbGoSPcRdTGPAS09c_CiN_Y";
 
-// Categories for blog articles
+// Categories for blog articles - matching eugeniaschool.com
 export const blogCategories = [
   { label: "Tous", slug: "" },
   { label: "Actualites", slug: "actualites" },
-  { label: "Business Deep Dives", slug: "business-deep-dives" },
   { label: "Pedagogie", slug: "pedagogie" },
   { label: "Bachelor", slug: "bachelor" },
+  { label: "Stages et Alternances", slug: "stages-alternances" },
+  { label: "Bien-etre", slug: "bien-etre" },
+  { label: "STMG", slug: "stmg" },
   { label: "Entrepreneuriat", slug: "entrepreneuriat" },
-  { label: "Master", slug: "master" },
-  { label: "IA et Data", slug: "ia-et-data" },
-  { label: "Business et Carrieres", slug: "business-carrieres" },
-  { label: "Orientation", slug: "orientation" },
-  { label: "Vie Eugenia", slug: "vie-eugenia" },
 ];
 
 export interface BlogArticle {
@@ -97,7 +94,7 @@ function getCategoryLabel(slug: string): string {
   return category?.label || slug;
 }
 
-// Normalize category string to slug
+// Normalize category string to slug - matching eugeniaschool.com categories
 function normalizeCategory(cat: string): string {
   if (!cat) return "actualites";
   
@@ -107,17 +104,14 @@ function normalizeCategory(cat: string): string {
     .replace(/[\u0300-\u036f]/g, "")
     .trim();
   
-  // Map common variations
+  // Map common variations to official categories
   if (normalized.includes("actualite")) return "actualites";
-  if (normalized.includes("business") && normalized.includes("deep")) return "business-deep-dives";
-  if (normalized.includes("business") && normalized.includes("carriere")) return "business-carrieres";
   if (normalized.includes("pedagog")) return "pedagogie";
   if (normalized.includes("bachelor")) return "bachelor";
+  if (normalized.includes("stage") || normalized.includes("alternance")) return "stages-alternances";
+  if (normalized.includes("bien") || normalized.includes("etre") || normalized.includes("wellness")) return "bien-etre";
+  if (normalized.includes("stmg")) return "stmg";
   if (normalized.includes("entrepreneur")) return "entrepreneuriat";
-  if (normalized.includes("master") || normalized.includes("msc")) return "master";
-  if (normalized.includes("ia") || normalized.includes("data")) return "ia-et-data";
-  if (normalized.includes("orientation")) return "orientation";
-  if (normalized.includes("vie") || normalized.includes("eugenia")) return "vie-eugenia";
   
   return normalized.replace(/\s+/g, "-");
 }
@@ -144,23 +138,36 @@ function findColumnIndex(headers: string[], ...possibleNames: string[]): number 
 }
 
 // Extract glossary terms from markdown content
-// Expects format: ## Glossaire\n- **Term**: Definition\n- **Term2**: Definition2
+// Expects format:
+// ## Le Glossaire Eugenia
+// ### IA generative (Generative AI)
+// Definition text. Exemple business : example text.
+// ### Autre terme
+// Definition...
 function extractGlossary(content: string, articleTitle: string, articleSlug: string): GlossaryTerm[] {
   const glossaryTerms: GlossaryTerm[] = [];
   
-  // Find glossary section
-  const glossaryMatch = content.match(/##\s*Glossaire\s*\n([\s\S]*?)(?=\n##|$)/i);
+  // Find glossary section - supports "## Glossaire", "## Le Glossaire Eugenia", etc.
+  const glossaryMatch = content.match(/##\s*(?:Le\s+)?Glossaire(?:\s+Eugenia)?\s*\n([\s\S]*?)(?=\n##(?!#)|$)/i);
   if (!glossaryMatch) return glossaryTerms;
   
   const glossarySection = glossaryMatch[1];
   
-  // Match patterns like "- **Term**: Definition" or "* **Term**: Definition"
-  const termPattern = /[-*]\s*\*\*([^*]+)\*\*\s*:\s*([^\n]+)/g;
-  let match;
+  // Match patterns like "### Term (English)\nDefinition text"
+  // Split by ### to get each term block
+  const termBlocks = glossarySection.split(/\n###\s+/).filter(block => block.trim());
   
-  while ((match = termPattern.exec(glossarySection)) !== null) {
-    const term = match[1].trim();
-    const definition = match[2].trim();
+  for (const block of termBlocks) {
+    const lines = block.split('\n');
+    const termLine = lines[0]?.trim();
+    
+    if (!termLine) continue;
+    
+    // Extract term (may include parenthetical like "IA generative (Generative AI)")
+    const term = termLine.replace(/\s*\([^)]+\)\s*$/, '').trim();
+    
+    // Rest of the block is the definition
+    const definition = lines.slice(1).join(' ').trim();
     
     if (term && definition) {
       glossaryTerms.push({

@@ -284,7 +284,7 @@ export const metiers = [
 ];
 
 export const blogPosts = [
-  // Articles du site eugeniaschool.com
+  // Articles du site eugeniaschool.com - Categories: Actualites, Pedagogie, Bachelor, Stages et Alternances, Bien-etre, STMG, Entrepreneuriat
   {
     slug: "parcoursup-que-faire-maintenant-que-les-voeux-sont-clos",
     title: "Parcoursup : que faire maintenant que les voeux sont clos ?",
@@ -310,8 +310,8 @@ export const blogPosts = [
   {
     slug: "master-of-science-ai-applied-to-business-une-formation-pensee-pour-laction",
     title: "Master of Science AI Applied to Business : une formation pensee pour l'action",
-    category: "master",
-    categoryLabel: "Master",
+    category: "stages-alternances",
+    categoryLabel: "Stages et Alternances",
     author: "Malou P.",
     date: "2025-04-17",
     readTime: 6,
@@ -321,8 +321,8 @@ export const blogPosts = [
   {
     slug: "excel-vs-power-bi-vs-tableau-quel-outil-de-data-visualisation-choisir",
     title: "Excel vs Power BI vs Tableau : quel outil de data visualisation choisir ?",
-    category: "business-deep-dives",
-    categoryLabel: "Business Deep Dives",
+    category: "stages-alternances",
+    categoryLabel: "Stages et Alternances",
     author: "Malou P.",
     date: "2025-04-15",
     readTime: 7,
@@ -376,8 +376,8 @@ export const blogPosts = [
   {
     slug: "que-faire-apres-un-bac-stmg",
     title: "Que faire apres un bac STMG ?",
-    category: "bachelor",
-    categoryLabel: "Bachelor",
+    category: "stmg",
+    categoryLabel: "STMG",
     author: "Noe M.",
     date: "2025-03-26",
     readTime: 6,
@@ -398,8 +398,8 @@ export const blogPosts = [
   {
     slug: "maintenir-attentin-etudiants-enseignement-superieur",
     title: "Maintenir l'attention des etudiants dans l'enseignement superieur : Un defi psychologique et cognitif",
-    category: "pedagogie",
-    categoryLabel: "Pedagogie",
+    category: "bien-etre",
+    categoryLabel: "Bien-etre",
     author: "Marie de Rosen",
     date: "2025-01-15",
     readTime: 8,
