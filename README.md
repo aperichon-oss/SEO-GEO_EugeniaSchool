@@ -1,6 +1,6 @@
 # Eugenia School - Site Web
 
-Site web officiel d'Eugenia School, ecole superieure specialisee dans l'IA et le Business.
+Optimisation SEO et GEO du site web officiel d'Eugenia School, ecole superieure specialisee dans l'IA et le Business.
 
 ## Stack Technique
 
